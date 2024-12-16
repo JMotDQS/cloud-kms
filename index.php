@@ -6,16 +6,16 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
 		<meta http-equiv="X-UA-Compatible" content="IE=11" />
 
-		<title>Transportation Portal</title>
+		<title>Cloud DQS-KMS</title>
 
 	<!-- Custom CSS -->
-		<link rel="stylesheet" href="css/custom.css">
+		<!--<link rel="stylesheet" href="css/custom.css">
 		<link rel="stylesheet" href="css/navbar.css">
 		<link rel="stylesheet" href="css/dialog.css">
 		<link rel="stylesheet" href="css/dialogUser.css">
 		<link rel="stylesheet" href="css/dialogLogin.css">
 		<link rel="stylesheet" href="css/dialogUpdatePassword.css">
-		<link rel="stylesheet" href="css/dialogBulkAddUser.css">
+		<link rel="stylesheet" href="css/dialogBulkAddUser.css">-->
 
 	</head>
 
@@ -41,7 +41,7 @@
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
 
 	<!-- Custom JavaScript -->
-		<script src="js/variables.js"></script>
+		<!--<script src="js/variables.js"></script>
 		<script src="js/index.js"></script>
 		<script src="js/custom.js"></script>
 		<script src="js/promises.js"></script>
@@ -52,6 +52,6 @@
 		<script src="js/dialogLogin.js"></script>
 		<script src="js/dialogAddAdmin.js"></script>
 		<script src="js/dialogUpdatePassword.js"></script>
-		<script src="js/dialogBulkAddUser.js"></script>
+		<script src="js/dialogBulkAddUser.js"></script>-->
 	</body>
 </html>

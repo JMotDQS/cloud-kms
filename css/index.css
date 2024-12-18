@@ -1,0 +1,114 @@
+*, *::before, *::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', system-ui, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+/* Sizing */
+	--quarter-rem: .25rem;
+	--half-rem: .5rem;
+	--three-quarter-rem: .75rem;
+	--full-rem: 1rem;
+	--full-quarter-rem: 1.25rem;
+	--full-half-rem: 1.5rem;
+	
+/* Colors */
+	--color-page-background: #f7f7f7;
+	--color-dark: #000137;
+	--color-medium-dark: #02055a;
+	--color-medium-light: #021988;
+	--color-light: #253da1;
+	--color-extra-light: hsla(228, 63%, 70%, 1);
+
+	--color-inactive-user: #e30e02;
+
+/* Navbar Colors */
+	--color-navbar-background: #074692;
+	--color-navbar-background-medium: #3c90f6;
+	--color-navbar-background-light: #cee3fd;
+
+/* Navbar */
+	--navbar-height: 3rem;
+	--navbar-link-color: #a0a0a0;
+	--navbar-link-hover-color: #f0f0f0;
+	--navbar-link-active-color: #86ee86;
+	--navbar-corner-radius: .75rem;
+	--navbar-border-size: 2px;
+
+/* Section Colors */
+	--alpha-background: 0.20;
+	--alpha-hover: 0.35;
+	--color-content-hover: #ffffff;
+
+	--color-checkin-background: hsla(280 82% 43% / var(--alpha-background));
+	--color-checkin-dark: hsla(280 82% 43% / 1);
+	--color-checkin-hover: hsla(280 82% 43% / var(--alpha-hover));
+
+	--color-checkout-background: hsla(135 82% 43% / var(--alpha-background));
+	--color-checkout-dark: hsla(135 82% 43% / 1);
+	--color-checkout-hover: hsla(135 82% 43% / var(--alpha-hover));
+
+	--color-labels-background: hsla(181 82% 43% / var(--alpha-background));
+	--color-labels-dark: hsla(181 82% 43% / 1);
+	--color-labels-hover: hsla(181 82% 43% / var(--alpha-hover));
+
+	--color-search-background: hsla(27 82% 43% / var(--alpha-background));
+	--color-search-dark: hsla(27 82% 43% / 1);
+	--color-search-hover: hsla(27 82% 43% / var(--alpha-hover));
+
+	--color-reports-background: hsl(51 82% 43% / var(--alpha-background));
+	--color-reports-dark: hsl(51 82% 43% / 1);
+	--color-reports-hover: hsl(51 82% 43% / var(--alpha-hover));
+
+	--color-containers-background: hsla(315 82% 43% / var(--alpha-background));
+	--color-containers-dark: hsla(315 82% 43% / 1);
+	--color-containers-hover: hsla(315 82% 43% / var(--alpha-hover));
+
+	--color-dashboard-background: hsla(80 82% 43% / var(--alpha-background));
+	--color-dashboard-dark: hsla(80 82% 43% / 1);
+	--color-dashboard-hover: hsla(80 82% 43% / var(--alpha-hover));
+}
+
+body {
+	background-color: var(--color-page-background);
+	font-size: var(--three-quarter-rem);
+}
+
+.main-container {
+	padding-inline: var(--full-rem);
+	margin-inline: auto;
+}
+
+.grid-container {
+	display: grid;
+	margin-inline: auto;
+	gap: var(--full-rem);
+	justify-content: stretch;
+	align-items: center;
+}
+
+.card {
+	border: 1px solid #000000;
+	border-radius: var(--half-rem);
+	padding: var(--half-rem);
+	text-align: center;
+	cursor: pointer;
+}
+
+.card-body {
+	font-weight: 500;
+	font-size: var(--full-rem);
+}
+
+.card-labels {
+	border-color: var(--color-labels-dark);
+	background-color: var(--color-labels-background);
+}
+.card-labels .card-icon {
+	font-size: calc(var(--full-rem) * 2);
+	color: var(--color-labels-dark);
+}

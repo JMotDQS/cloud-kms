@@ -9,8 +9,9 @@
 		<title>Cloud DQS-KMS</title>
 
 	<!-- Custom CSS -->
-		<!--<link rel="stylesheet" href="css/custom.css">
+		<link rel="stylesheet" href="css/index.css">
 		<link rel="stylesheet" href="css/navbar.css">
+		<!--<link rel="stylesheet" href="css/custom.css">
 		<link rel="stylesheet" href="css/dialog.css">
 		<link rel="stylesheet" href="css/dialogUser.css">
 		<link rel="stylesheet" href="css/dialogLogin.css">
@@ -20,14 +21,18 @@
 	</head>
 
 	<body id="home">
-		<header>
+		<!--<header>
 			<img id="logo-header" class="nav-logo" src="images/DQS_logo.svg">
 
 			<nav id="nav"></nav>
 		</header>
-		
+		<a href="pages/app/home.html">Home</a>
+		<a href="pages/app/checkin.html">Check In</a>
+		<a href="pages/app/checkout.html">Check Out</a>
+		<a href="pages/app/labels.html">Labels</a>-->
+		<nav id="nav"></nav>
 		<div id="app"></div>
-		<div id="search-results" class="search-results"></div>
+		<!--<div id="search-results" class="search-results"></div>-->
 
 		<dialog id="dialog_user" class="g_dialog dialog_user"></dialog>
 		<dialog id="dialog_login" class="g_dialog dialog_login"></dialog>
@@ -41,9 +46,9 @@
 		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
 
 	<!-- Custom JavaScript -->
-		<!--<script src="js/variables.js"></script>
+		<script src="js/variables.js"></script>
 		<script src="js/index.js"></script>
-		<script src="js/custom.js"></script>
+		<!--<script src="js/custom.js"></script>
 		<script src="js/promises.js"></script>
 		<script src="js/users.js"></script>
 		<script src="js/itemAssociation.js"></script>

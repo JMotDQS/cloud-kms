@@ -20,7 +20,7 @@ function refreshApp() {
 	//document.getElementById('search-results').textContent = '';
 	//loadDialog('login', g_DIALOG, 'dialog_login');
 	loadPage('nav', g_NAV);
-	loadPage('home');
+	loadPage('index');
 }
 
 function loadPage(param_template, param_element = 'app') {

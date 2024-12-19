@@ -20,18 +20,20 @@ function refreshApp() {
 	//document.getElementById('search-results').textContent = '';
 	//loadDialog('login', g_DIALOG, 'dialog_login');
 	loadPage('nav', g_NAV);
-	loadPage('index');
+	//loadPage('index');
+	loadPage('');
 }
 
 function loadPage(param_template, param_element = 'app') {
 	console.log("loadPage() called");
 	console.log("loadPage():param_template:", param_template);
 	console.log("loadPage():param_element:", param_element);
-	var temp_dir = "pages/" + param_element + "/";
+	//var temp_dir = "pages/" + param_element + "/";
+	var temp_dir = "";
 	if (param_template != '') {
-		temp_dir += param_template + ".html?nc=" + (Math.random() * 1000000);
+		temp_dir = "pages/" + param_element + "/" + param_template + ".html?nc=" + (Math.random() * 1000000);
 
-		$('#' + param_element).load(temp_dir,
+		/*$('#' + param_element).load(temp_dir,
 			function(responseTxt, statusTxt, xhr) {
 				switch(statusTxt) {
 					case "success":
@@ -44,8 +46,38 @@ function loadPage(param_template, param_element = 'app') {
 					case "error":
 						break;
 				}
-		});
+		});*/
+	} else {
+		temp_dir = "index.html?nc=" + (Math.random() * 1000000);
+		/*$('#' + param_element).load(temp_dir,
+			function(responseTxt, statusTxt, xhr) {
+				switch(statusTxt) {
+					case "success":
+						$('.navbar-click').on('click', function() {
+							loadPage($(this).data('page'));
+						});
+						pageCheck(param_template);
+						break;
+
+					case "error":
+						break;
+				}
+		});*/
 	}
+	$('#' + param_element).load(temp_dir,
+		function(responseTxt, statusTxt, xhr) {
+			switch(statusTxt) {
+				case "success":
+					$('.navbar-click').on('click', function() {
+						loadPage($(this).data('page'));
+					});
+					pageCheck(param_template);
+					break;
+
+				case "error":
+					break;
+			}
+	});
 }
 function loadDialog(param_template, param_template_dir, param_load_ele, param_user_id = 0) {
 	var temp_dir = "pages/" + param_template_dir + "/";

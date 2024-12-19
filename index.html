@@ -13,4 +13,13 @@
 <div class="grid-container grid-container-home">
 	<h2>Home</h2>
 	<a href="../../">Back</a>
+			
+		<!--{sections.map(section => (
+			<div class={`card ${'card-' + section.section.replaceAll(' ','').toLowerCase()}`} key={section.id} onClick={() => onClickNavigate('/' + section.section.replaceAll(' ','').toLowerCase())}>
+				<h1>{section.section}</h1>
+				<p class="card-body">{section.body}</p>
+				<p class="card-icon"><FontAwesomeIcon icon={section.icon} /></p>
+			</div>
+		))}-->
+
 </div>

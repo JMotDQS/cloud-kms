@@ -112,6 +112,102 @@ body {
 	font-size: calc(var(--full-rem) * 2);
 	color: var(--color-labels-dark);
 }
+.card-labels:hover {
+	background-color: var(--color-labels-hover);
+}
+.card-labels:hover .card-icon {
+	color: var(--color-content-hover);
+}
+
+.card-checkin {
+	border-color: var(--color-checkin-dark);
+	background-color: var(--color-checkin-background);
+}
+.card-checkin .card-icon {
+	font-size: calc(var(--full-rem) * 2);
+	color: var(--color-checkin-dark);
+}
+.card-checkin:hover {
+	background-color: var(--color-checkin-hover);
+}
+.card-checkin:hover .card-icon {
+	color: var(--color-content-hover);
+}
+
+.card-checkout {
+	border-color: var(--color-checkout-dark);
+	background-color: var(--color-checkout-background);
+}
+.card-checkout .card-icon {
+	font-size: calc(var(--full-rem) * 2);
+	color: var(--color-checkout-dark);
+}
+.card-checkout:hover {
+	background-color: var(--color-checkout-hover);
+}
+.card-checkout:hover .card-icon {
+	color: var(--color-content-hover);
+}
+
+.card-search {
+	border-color: var(--color-search-dark);
+	background-color: var(--color-search-background);
+}
+.card-search .card-icon {
+	font-size: calc(var(--full-rem) * 2);
+	color: var(--color-search-dark);
+}
+.card-search:hover {
+	background-color: var(--color-search-hover);
+}
+.card-search:hover .card-icon {
+	color: var(--color-content-hover);
+}
+
+.card-reports {
+	border-color: var(--color-reports-dark);
+	background-color: var(--color-reports-background);
+}
+.card-reports .card-icon {
+	font-size: calc(var(--full-rem) * 2);
+	color: var(--color-reports-dark);
+}
+.card-reports:hover {
+	background-color: var(--color-reports-hover);
+}
+.card-reports:hover .card-icon {
+	color: var(--color-content-hover);
+}
+
+.card-dashboard {
+	border-color: var(--color-dashboard-dark);
+	background-color: var(--color-dashboard-background);
+}
+.card-dashboard .card-icon {
+	font-size: calc(var(--full-rem) * 2);
+	color: var(--color-dashboard-dark);
+}
+.card-dashboard:hover {
+	background-color: var(--color-dashboard-hover);
+}
+.card-dashboard:hover .card-icon {
+	color: var(--color-content-hover);
+}
+
+.card-containers {
+	border-color: var(--color-containers-dark);
+	background-color: var(--color-containers-background);
+}
+.card-containers .card-icon {
+	font-size: calc(var(--full-rem) * 2);
+	color: var(--color-containers-dark);
+}
+.card-containers:hover {
+	background-color: var(--color-containers-hover);
+}
+.card-containers:hover .card-icon {
+	color: var(--color-content-hover);
+}
 
 @media (width > 1099px) {
 	.main-container {

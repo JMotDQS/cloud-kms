@@ -112,3 +112,9 @@ body {
 	font-size: calc(var(--full-rem) * 2);
 	color: var(--color-labels-dark);
 }
+
+@media (width > 1099px) {
+	.main-container {
+		width: 1100px;
+	}
+}

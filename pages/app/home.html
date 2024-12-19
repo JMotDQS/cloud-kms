@@ -1,2 +1,16 @@
-<h2>Home</h2>
-<a href="../../">Back</a>
+<style>
+	.grid-container-home {
+		grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr);
+	}
+
+	@media (width < 600px) {
+		.grid-container-home {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
+
+<div class="grid-container grid-container-home">
+	<h2>Home</h2>
+	<a href="../../">Back</a>
+</div>

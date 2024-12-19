@@ -31,7 +31,7 @@
 		<a href="pages/app/checkout.html">Check Out</a>
 		<a href="pages/app/labels.html">Labels</a>-->
 		<nav id="nav"></nav>
-		<div id="app"></div>
+		<div id="app" class="main-container"></div>
 		<!--<div id="search-results" class="search-results"></div>-->
 
 		<dialog id="dialog_user" class="g_dialog dialog_user"></dialog>

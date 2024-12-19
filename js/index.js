@@ -20,6 +20,7 @@ function refreshApp() {
 	//document.getElementById('search-results').textContent = '';
 	//loadDialog('login', g_DIALOG, 'dialog_login');
 	loadPage('nav', g_NAV);
+	loadPage('home');
 }
 
 function loadPage(param_template, param_element = 'app') {
@@ -28,7 +29,7 @@ function loadPage(param_template, param_element = 'app') {
 	console.log("loadPage():param_element:", param_element);
 	var temp_dir = "pages/" + param_element + "/";
 	if (param_template != '') {
-		temp_dir += param_element + ".html?nc=" + (Math.random() * 1000000);
+		temp_dir += param_template + ".html?nc=" + (Math.random() * 1000000);
 
 		$('#' + param_element).load(temp_dir,
 			function(responseTxt, statusTxt, xhr) {

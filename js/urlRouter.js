@@ -69,7 +69,7 @@ const urlLocationHandler = async (param_location) => {
 	}
 	console.log("urlLocationHandler:param_location:", param_location);
 	console.log("urlLocationHandler:location:", location);
-	//window.history.pushState({}, "", location);
+	window.history.pushState({}, "", location);
 
 	const route = urlRoutes[param_location] || urlRoutes[404];
 	console.log("urlLocationHandler():route.page:", route.page);

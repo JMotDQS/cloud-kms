@@ -20,7 +20,7 @@ function refreshApp() {
 	//document.getElementById('search-results').textContent = '';
 	//loadDialog('login', g_DIALOG, 'dialog_login');
 	loadPage('nav', g_NAV);
-	loadPage('');
+	loadPage('index');
 }
 
 function loadPage(param_template, param_element = 'app') {
@@ -28,10 +28,10 @@ function loadPage(param_template, param_element = 'app') {
 	console.log("loadPage():param_template:", param_template);
 	console.log("loadPage():param_element:", param_element);
 	var temp_dir = "";
-	if (param_template != '') {
+	if (param_template != 'index') {
 		temp_dir = "pages/" + param_element + "/" + param_template + ".html?nc=" + (Math.random() * 1000000);
 	} else {
-		temp_dir = "index.html?nc=" + (Math.random() * 1000000);
+		temp_dir = param_template + ".html?nc=" + (Math.random() * 1000000);
 	}
 
 	$('#' + param_element).load(temp_dir,
@@ -71,7 +71,11 @@ function pageCheck(param_page, param_user_id) {
 	clearTimer(g_TIMER);
 
 	switch(param_page) {
-		case "addUser":	
+		case "index":
+			setIndexContent();
+			break;
+		
+		case "addUser":
 			buildCompanyDropdown('dialog_user_company');
 			openDialogUser(g_NO_SEARCH_RESULTS);
 			break;
@@ -135,6 +139,18 @@ function pageCheck(param_page, param_user_id) {
 			BULK_ADD_USER_DIALOG.showModal();
 			break;
 	}
+}
+
+function setIndexContent() {
+	var temp_html = '';
+	sections.forEach(section => {
+		temp_html += `<div class="card ${'card-' + section.section.replaceAll(' ','').toLowerCase()}">`;
+			temp_html += `<h1>${section.section}</h1>`;
+			temp_html += `<p class="card-body">${section.body}</p>`;
+			temp_html += `<p class="card-icon"><i class="${section.icon}"></i></p>`;
+		temp_html += `</div>`;
+	});
+	document.getElementById("index").innerHTML = temp_html;
 }
 
 function getCompanies() {

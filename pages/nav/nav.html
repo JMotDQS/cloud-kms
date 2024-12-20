@@ -21,12 +21,12 @@
 	<img src="images/DQS_logo.svg" id="logo-header" class="nav-logo" data-page='kms' alt="" />
 </div>
 <ul class="nav-links">
-	<a class="navbar-item navbar-link" href="">Home</a>
+	<a class="navbar-item navbar-link" data-route="/cloud-kms" onclick="loadPage('index')">Home</a>
 	<li class="navbar-item nav-item-divider">|</li>
-	<a class="navbar-item navbar-link" href="pages/app/labels.html">Labels</a>
+	<a class="navbar-item navbar-link" data-route="labels" onclick="navClick(this)">Labels</a>
 	<li class="navbar-item nav-item-divider">|</li>
-	<a class="navbar-item navbar-link" href="pages/app/checkin.html">Check In</a>
+	<a class="navbar-item navbar-link" data-route="checkin" onclick="navClick(this)">Check In</a>
 	<li class="navbar-item nav-item-divider">|</li>
-	<a class="navbar-item navbar-link" href="pages/app/checkout.html">Check Out</a>
+	<a class="navbar-item navbar-link" data-route="checkout" onclick="navClick(this)">Check Out</a>
 	<li class="navbar-item nav-item-divider">|</li>
 </ul>

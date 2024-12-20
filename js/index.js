@@ -24,9 +24,6 @@ function refreshApp() {
 }
 
 function loadPage(param_template, param_element = 'app') {
-	console.log("loadPage() called");
-	console.log("loadPage():param_template:", param_template);
-	console.log("loadPage():param_element:", param_element);
 	var temp_dir = "";
 	if (param_template != 'index') {
 		temp_dir = "pages/" + param_element + "/" + param_template + ".html?nc=" + (Math.random() * 1000000);

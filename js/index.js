@@ -26,10 +26,12 @@ function refreshApp() {
 function loadPage(param_template, param_element = 'app') {
 	var temp_dir = "";
 	if (param_template != 'index') {
-		temp_dir = "pages/" + param_element + "/" + param_template + ".html?nc=" + (Math.random() * 1000000);
+		temp_dir = `/cloud-kms/pages/${param_element}/${param_template}.html?nc=${(Math.random() * 1000000)}`;
 	} else {
-		temp_dir = param_template + ".html?nc=" + (Math.random() * 1000000);
+		temp_dir = `/cloud-kms/${param_template}.html?nc=${(Math.random() * 1000000)}`;
 	}
+
+	console.log("loadPage:temp_dir:", temp_dir);
 
 	$('#' + param_element).load(temp_dir,
 		function(responseTxt, statusTxt, xhr) {
@@ -65,6 +67,7 @@ function loadDialog(param_template, param_template_dir, param_load_ele, param_us
 	}
 }
 function pageCheck(param_page, param_user_id) {
+	console.log("pageCheck:param_page:", param_page);
 	clearTimer(g_TIMER);
 
 	switch(param_page) {
@@ -141,7 +144,8 @@ function pageCheck(param_page, param_user_id) {
 function setIndexContent() {
 	var temp_html = '';
 	sections.forEach(section => {
-		temp_html += `<div class="card ${'card-' + section.section.replaceAll(' ','').toLowerCase()}">`;
+		var cur_section = section.section.replaceAll(' ','').toLowerCase();
+		temp_html += `<div class="card ${'card-' + cur_section}" data-route="${cur_section}" onclick="urlClick(this)">`;
 			temp_html += `<h1>${section.section}</h1>`;
 			temp_html += `<p class="card-body">${section.body}</p>`;
 			temp_html += `<p class="card-icon"><i class="${section.icon}"></i></p>`;

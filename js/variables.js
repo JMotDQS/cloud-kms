@@ -1,5 +1,5 @@
 /***** Global Use Variables */
-const g_ROOT_PATH = 'localhost/cloud-kms';
+const g_ROOT_PATH = '/cloud-kms/';
 const USER_DIALOG = document.querySelector('.dialog_user');
 const LOGIN_DIALOG = document.querySelector('.dialog_login');
 const ADD_ADMIN_DIALOG = document.querySelector('.dialog_add_admin');

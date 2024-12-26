@@ -142,16 +142,22 @@ function pageCheck(param_page, param_user_id) {
 }
 
 function setIndexContent() {
-	var temp_html = '';
-	sections.forEach(section => {
-		var cur_section = section.section.replaceAll(' ','').toLowerCase();
-		temp_html += `<div class="card ${'card-' + cur_section}" data-route="${cur_section}" onclick="urlClick(this)">`;
-			temp_html += `<h1>${section.section}</h1>`;
-			temp_html += `<p class="card-body">${section.body}</p>`;
-			temp_html += `<p class="card-icon"><i class="${section.icon}"></i></p>`;
-		temp_html += `</div>`;
+	getSectionsPromise('get_sections').then((resolve) => {
+		var temp_html = '';
+		resolve.forEach(section => {
+			var cur_section = section.section.replaceAll(' ','').toLowerCase();
+			temp_html += `<div id="${section.pk_id}" class="card ${'card-' + cur_section}" data-route="${cur_section}" onclick="urlClick(this)">`;
+				temp_html += `<h1>${section.section}</h1>`;
+				temp_html += `<p class="card-body">${section.body_copy}</p>`;
+				temp_html += `<p class="card-icon"><i class="${section.icon}"></i></p>`;
+			temp_html += `</div>`;
+		});
+		document.getElementById("index").innerHTML = temp_html;
+	}).catch(function(reject) {
+		consoleReporting(reject);
+	}).finally(function() {
+		consoleReporting("Moving On.");
 	});
-	document.getElementById("index").innerHTML = temp_html;
 }
 
 function getCompanies() {

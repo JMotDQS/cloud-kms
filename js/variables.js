@@ -33,6 +33,8 @@ const g_NAV = 'nav';
 const g_DIALOG = 'dialog';
 const g_VER = '2.2'; // Physical Audit export now includes system report without duplicate VINs
 
+const g_CONNECTION_ERROR_COPY = 'An error occured connecting to the data'
+
 /***** Special Character Replacement Arrays Global Variables */
 const g_SEARCH_ENTITIES = ["Ø", "°",
 						"\"", "\'",

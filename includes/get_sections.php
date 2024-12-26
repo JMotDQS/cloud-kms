@@ -3,6 +3,8 @@
 	require_once("config.php");
 
 	$return_array = [];
+	$return_array['conn'] = false;
+	$return_array['sections'] = [];
 	$serverName = $host."\\sqlexpress";
 
 	// Since UID and PWD are not specified in the $connectionInfo array,
@@ -11,7 +13,7 @@
 	$conn = sqlsrv_connect($serverName, $connectionInfo);
 
 	if ($conn) {
-		// INSERT INTO vins table
+		$return_array['conn'] = true;
 		$sql = "SELECT pk_id, section, body_copy, icon
 				FROM kms_sections
 				ORDER BY display_order ASC";
@@ -19,7 +21,7 @@
 
 		if ($res) {
 			while ($row = sqlsrv_fetch_array($res, SQLSRV_FETCH_ASSOC)) {
-				array_push($return_array, $row);
+				array_push($return_array['sections'], $row);
 			}
 		}
 

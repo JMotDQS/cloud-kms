@@ -1,7 +1,7 @@
-function getSectionsPromise(param_file) {
+function getSectionsPromise() {
 	return new Promise(function(resolve, reject) {
 		$.ajax({
-			url: "includes/" + param_file + ".php",
+			url: "includes/get_sections.php",
 			type: 'POST',
 			cache: false,
 			dataType: 'json',

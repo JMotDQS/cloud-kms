@@ -24,6 +24,7 @@ function refreshApp() {
 }
 
 function loadPage(param_template, param_element = 'app') {
+	console.log("loadPage() called");
 	var temp_dir = "";
 	if (param_template != 'index') {
 		temp_dir = `pages/${param_element}/${param_template}.html?nc=${(Math.random() * 1000000)}`;
@@ -37,7 +38,9 @@ function loadPage(param_template, param_element = 'app') {
 		function(responseTxt, statusTxt, xhr) {
 			switch(statusTxt) {
 				case "success":
+					console.log("load success");
 					$('.navbar-link').on('click', function() {
+						console.log("boo");
 						loadPage($(this).data('page'));
 					});
 					pageCheck(param_template);
@@ -67,7 +70,6 @@ function loadDialog(param_template, param_template_dir, param_load_ele, param_us
 	}
 }
 function pageCheck(param_page, param_user_id) {
-	console.log("pageCheck:param_page:", param_page);
 	clearTimer(g_TIMER);
 
 	switch(param_page) {
@@ -142,6 +144,7 @@ function pageCheck(param_page, param_user_id) {
 }
 
 function setIndexContent() {
+	console.log("setIndexContent() called");
 	getSectionsPromise().then((resolve) => {
 		var temp_html = '';
 		if(resolve['conn']) {

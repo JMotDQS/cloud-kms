@@ -17,14 +17,11 @@ function refreshApp() {
 
 	document.getElementById('nav').textContent = '';
 	document.getElementById('app').textContent = '';
-	//document.getElementById('search-results').textContent = '';
-	//loadDialog('login', g_DIALOG, 'dialog_login');
 	loadPage('nav', g_NAV);
 	loadPage('index');
 }
 
 function loadPage(param_template, param_element = 'app') {
-	console.log("loadPage() called");
 	var temp_dir = "";
 	if (param_template != 'index') {
 		temp_dir = `pages/${param_element}/${param_template}.html?nc=${(Math.random() * 1000000)}`;
@@ -32,17 +29,14 @@ function loadPage(param_template, param_element = 'app') {
 		temp_dir = `${param_template}.html?nc=${(Math.random() * 1000000)}`;
 	}
 
-	console.log("loadPage:temp_dir:", temp_dir);
-
 	$('#' + param_element).load(temp_dir,
 		function(responseTxt, statusTxt, xhr) {
 			switch(statusTxt) {
 				case "success":
-					console.log("load success");
-					$('.navbar-link').on('click', function() {
+					/*$('.navbar-link').on('click', function() {
 						console.log("boo");
 						loadPage($(this).data('page'));
-					});
+					});*/
 					pageCheck(param_template);
 					break;
 
@@ -144,13 +138,12 @@ function pageCheck(param_page, param_user_id) {
 }
 
 function setIndexContent() {
-	console.log("setIndexContent() called");
 	getSectionsPromise().then((resolve) => {
 		var temp_html = '';
 		if(resolve['conn']) {
 			resolve['sections'].forEach(section => {
 				var cur_section = section.section.replaceAll(' ','').toLowerCase();
-				temp_html += `<div id="${section.pk_id}" class="card ${'card-' + cur_section}" data-page="${cur_section}" onclick="sectionClick(this)">`;
+				temp_html += `<div id="${section.pk_id}" class="card ${'card-' + cur_section}" data-page="${cur_section}" onclick="sectionClick(this.dataset.page)">`;
 					temp_html += `<h1>${section.section}</h1>`;
 					temp_html += `<p class="card-body">${section.body_copy}</p>`;
 					temp_html += `<p class="card-icon"><i class="${section.icon}"></i></p>`;
@@ -168,8 +161,7 @@ function setIndexContent() {
 }
 
 function sectionClick(data) {
-	console.log("data.dataset.page:", data.dataset.page);
-	loadPage(data.dataset.page);
+	loadPage(data);
 }
 
 function getCompanies() {

@@ -48,7 +48,8 @@ window.addEventListener('urlChange', function(e) {
 
 const urlClick = (data) => {
 	//window.history.pushState({}, "", data.dataset.route);
-	urlLocationHandler(data.dataset.route);
+	//urlLocationHandler(data.dataset.route);
+	console.log("urlClick:data:", data);
 };
 
 /*document.addEventListener("click", (e) => {

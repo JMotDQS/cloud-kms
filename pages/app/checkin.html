@@ -1,2 +1,67 @@
-<h2>Check In</h2>
-<a href="../../">Back</a>
+<style>
+	.card {
+		text-align: start;
+	}
+
+	form > label {
+		font-weight: 600;
+	}
+
+	.inset-container {
+		background-color: #ffffff;
+		border-color: var(--color-checkin-dark);
+		grid-column: 1/-1;
+	}
+
+	.grid-container-checkin {
+		display: grid;
+		grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr);
+		gap: var(--full-rem);
+	}
+
+	.card-header {
+		grid-column: 1/-1;
+	}
+	
+	@media (width > 899px) {
+		.main-container {
+			width: 900px;
+		}
+	}
+</style>
+
+<div id="checkin" class="grid-container">
+	
+	<div class="grid-container-checkin card card-checkin disable-hover">
+		<div class="card-header">
+			<h2>VIN Check-In</h2>
+		</div>
+		<div class="card grid-container inset-container">
+				<!--<p>VIN:</p>
+				<input type="text" />-->
+			<form>
+				<label for="vin">VIN:</label>
+				<input id="vin" name="vin" type="text" />
+			</form>
+		</div>
+
+		<div class="card grid-container inset-container">
+			<!--<p>VIN:</p>
+			<input type="text" />-->
+		<form>
+			<label for="vin">VIN:</label>
+			<input id="vin" name="vin" type="text" />
+		</form>
+	</div>
+	</div>
+	<!--<a href="../../">Back</a>-->
+			
+		<!--{sections.map(section => (
+			<div class={`card ${'card-' + section.section.replaceAll(' ','').toLowerCase()}`} key={section.id} onClick={() => onClickNavigate('/' + section.section.replaceAll(' ','').toLowerCase())}>
+				<h1>{section.section}</h1>
+				<p class="card-body">{section.body}</p>
+				<p class="card-icon"><FontAwesomeIcon icon={section.icon} /></p>
+			</div>
+		))}-->
+
+</div>

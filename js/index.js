@@ -26,9 +26,9 @@ function refreshApp() {
 function loadPage(param_template, param_element = 'app') {
 	var temp_dir = "";
 	if (param_template != 'index') {
-		temp_dir = `/cloud-kms/pages/${param_element}/${param_template}.html?nc=${(Math.random() * 1000000)}`;
+		temp_dir = `pages/${param_element}/${param_template}.html?nc=${(Math.random() * 1000000)}`;
 	} else {
-		temp_dir = `/cloud-kms/${param_template}.html?nc=${(Math.random() * 1000000)}`;
+		temp_dir = `${param_template}.html?nc=${(Math.random() * 1000000)}`;
 	}
 
 	console.log("loadPage:temp_dir:", temp_dir);
@@ -37,7 +37,7 @@ function loadPage(param_template, param_element = 'app') {
 		function(responseTxt, statusTxt, xhr) {
 			switch(statusTxt) {
 				case "success":
-					$('.navbar-click').on('click', function() {
+					$('.navbar-link').on('click', function() {
 						loadPage($(this).data('page'));
 					});
 					pageCheck(param_template);
@@ -147,7 +147,7 @@ function setIndexContent() {
 		if(resolve['conn']) {
 			resolve['sections'].forEach(section => {
 				var cur_section = section.section.replaceAll(' ','').toLowerCase();
-				temp_html += `<div id="${section.pk_id}" class="card ${'card-' + cur_section}" data-route="${cur_section}" onclick="urlClick(this)">`;
+				temp_html += `<div id="${section.pk_id}" class="card ${'card-' + cur_section}" data-page="${cur_section}" onclick="sectionClick(this)">`;
 					temp_html += `<h1>${section.section}</h1>`;
 					temp_html += `<p class="card-body">${section.body_copy}</p>`;
 					temp_html += `<p class="card-icon"><i class="${section.icon}"></i></p>`;
@@ -162,6 +162,11 @@ function setIndexContent() {
 	}).finally(function() {
 		consoleReporting("Moving On.");
 	});
+}
+
+function sectionClick(data) {
+	console.log("data.dataset.page:", data.dataset.page);
+	loadPage(data.dataset.page);
 }
 
 function getCompanies() {

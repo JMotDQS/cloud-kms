@@ -40,7 +40,7 @@
 	--navbar-border-size: 2px;
 
 /* Section Colors */
-	--alpha-background: 0.20;
+	--alpha-background: 0.10;
 	--alpha-hover: 0.35;
 	--color-content-hover: #ffffff;
 
@@ -127,7 +127,7 @@ body {
 	font-size: calc(var(--full-rem) * 2);
 	color: var(--color-checkin-dark);
 }
-.card-checkin:hover {
+.card-checkin:not(.disable-hover):hover {
 	background-color: var(--color-checkin-hover);
 }
 .card-checkin:hover .card-icon {
@@ -207,6 +207,10 @@ body {
 }
 .card-containers:hover .card-icon {
 	color: var(--color-content-hover);
+}
+
+.disable-hover {
+	cursor: default;
 }
 
 @media (width > 1099px) {

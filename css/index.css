@@ -213,6 +213,26 @@ body {
 	cursor: default;
 }
 
+.disable-input {
+	opacity: 50%;
+}
+/*.disable-input > input {
+	pointer-events: none;
+}*/
+
+.feedback-red {
+	color: #ff0000;
+	font-weight: 600;
+  }
+  .feedback-green {
+	color: #078a07;
+	font-weight: 600;
+  }
+  .feedback-blue {
+	color: #3e7fe7;
+	font-weight: 600;
+  }
+
 @media (width > 1099px) {
 	.main-container {
 		width: 1100px;

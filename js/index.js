@@ -18,25 +18,17 @@ function refreshApp() {
 	document.getElementById('nav').textContent = '';
 	document.getElementById('app').textContent = '';
 	loadPage('nav', g_NAV);
-	loadPage('index');
+	loadPage('kms');
 }
 
 function loadPage(param_template, param_element = 'app') {
 	var temp_dir = "";
-	if (param_template != 'index') {
-		temp_dir = `pages/${param_element}/${param_template}.html?nc=${(Math.random() * 1000000)}`;
-	} else {
-		temp_dir = `${param_template}.html?nc=${(Math.random() * 1000000)}`;
-	}
+	temp_dir = `pages/${param_element}/${param_template}.html?nc=${(Math.random() * 1000000)}`
 
 	$('#' + param_element).load(temp_dir,
 		function(responseTxt, statusTxt, xhr) {
 			switch(statusTxt) {
 				case "success":
-					/*$('.navbar-link').on('click', function() {
-						console.log("boo");
-						loadPage($(this).data('page'));
-					});*/
 					pageCheck(param_template);
 					break;
 
@@ -67,8 +59,17 @@ function pageCheck(param_page, param_user_id) {
 	clearTimer(g_TIMER);
 
 	switch(param_page) {
-		case "index":
+		case "kms":
 			setIndexContent();
+			break;
+
+		case "checkin":
+			console.log("pageCheck:case checkin");
+			document.getElementById('vin').focus();
+			console.log("calling toggleDisabled()");
+			toggleDisabled('slot', true);
+			setKeyEvents(param_page, 'vin');
+			setKeyEvents(param_page, 'slot');
 			break;
 		
 		case "addUser":
@@ -152,7 +153,7 @@ function setIndexContent() {
 		} else {
 			temp_html = `<h2>${g_CONNECTION_ERROR_COPY}</h2>`;
 		}
-		document.getElementById("index").innerHTML = temp_html;
+		document.getElementById("kms").innerHTML = temp_html;
 	}).catch(function(reject) {
 		consoleReporting(reject);
 	}).finally(function() {
@@ -203,9 +204,16 @@ function reverseEntities(param_string) {
 	}
 }
 
-function feedBackColoring(param_ele, param_color = 'default') {
-	switch(param_color) {
+function feedBackColoring(param_ele, param_class = '', param_copy = '', param_color = 'default') {
+	//clearElementClassList(param_ele);
+	//document.getElementById(clearElementClassList(param_ele)).classList.add(param_class);
+	document.getElementById('vin-feedback').textContent = "Hello World"
+	clearElementClassList(param_ele, param_copy).classList.add(param_class);
+	/*document.getElementById(param_ele).classList = '';
+	document.getElementById(param_ele).classList.add(param_class);*/
+	/*switch(param_color) {
 		case 'red':
+			document.getElementById(param_ele).classList.remove();
 			$(param_ele).removeClass('feedback-green');
 			$(param_ele).removeClass('feedback-blue');
 			$(param_ele).addClass('feedback-red');
@@ -228,7 +236,13 @@ function feedBackColoring(param_ele, param_color = 'default') {
 			$(param_ele).removeClass('feedback-green');
 			$(param_ele).removeClass('feedback-blue');
 			break;
-	}
+	}*/
+}
+
+function clearElementClassList(param_ele, param_copy) {
+	document.getElementById('vin-feedback').textContent = param_copy;
+	document.getElementById(param_ele).classList = '';
+	return document.getElementById(param_ele);
 }
 
 function sliderSet(param_id, param_copy) {
@@ -265,8 +279,10 @@ function sliderClicked(e, param_copy) {
 	}
 }
 
-function toggleDisabled(param_ele, param_disabled) {
-    $(param_ele).prop('disabled', param_disabled);
+function toggleDisabled(param_ele, param_disabled = false) {
+	console.log("toggleDisabled() called");
+    document.getElementById(param_ele).setAttribute('disabled', param_disabled);
+	//$(param_ele).prop('disabled', param_disabled);
 }
 function toggleDisplay(param_ele, param_class, param_flag) {
 	if (param_flag) {
@@ -287,6 +303,69 @@ function setKeyEvents(param_page, param_element, param_multiplier = 1) {
 
 function clearTimer(param_timer) {
 	window.clearTimeout(param_timer); // prevent errant multiple timeouts from being generated
+}
+
+function keyPressEvent(e) {
+	e.preventDefault;
+	clearTimer(g_TIMER); // prevent errant multiple timeouts from being generated
+
+	switch(e.data.page) {
+		case 'checkIn':
+			switch(e.data.inputEl) {
+				case 'vin':
+					console.log("key pressed");
+					feedBackColoring('#vin-scan-feedback', 'blue');
+					$('#vin-scan-feedback').html('Loading VIN scan, please wait...');
+					break;
+
+				case 'slot':
+					feedBackColoring('#bin-scan-feedback', 'blue');
+					$('#bin-scan-feedback').html('Loading bin scan, please wait...');
+					break;
+			}
+			break;
+	}
+}
+function keyUpEvent(e) {
+	e.preventDefault;
+	clearTimer(g_TIMER); // prevent errant multiple timeouts from being generated
+
+	switch(e.data.page) {
+		case 'checkin':
+			switch(e.data.inputEl) {
+				case 'vin':
+					//toggleDisabled('.button-container #clear-button', false);
+					g_TIMER = window.setTimeout(() => {
+						toggleDisabled('vin', true);
+						/*toggleDisabled('#vinNum', true);
+						cleanVIN();*/
+					}, (g_TIMEOUT_VAL * parseInt(e.data.timerMultiplier)));
+					break;
+
+				case 'slot':
+					g_TIMER = window.setTimeout(() => {
+						/*toggleDisabled('#binNum', true);
+						collectBinScan();*/
+					}, (g_TIMEOUT_VAL * parseInt(e.data.timerMultiplier)));
+					break;
+			}
+			break;
+	}
+}
+
+function cleanVIN(param_vin_scan) {
+	var temp_vin
+	if (param_vin_scan.charAt(0).toUpperCase() === "I") {
+		temp_vin = param_vin_scan.substring(1);
+	} else {
+		temp_vin = param_vin_scan;
+	}
+
+	if(parseInt(temp_vin.length) === g_VIN_LENGTH) {
+		return temp_vin.toUpperCase();
+	} else {
+		return false;
+	}
 }
 
 function consoleReporting(param) {

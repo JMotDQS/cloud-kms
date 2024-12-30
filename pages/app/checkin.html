@@ -1,16 +1,19 @@
 <style>
 	.card {
 		text-align: start;
+		cursor: default;
 	}
 
-	form > label {
+	label {
 		font-weight: 600;
 	}
 
 	.inset-container {
 		background-color: #ffffff;
 		border-color: var(--color-checkin-dark);
-		grid-column: 1/-1;
+		display: grid;
+		gap: var(--half-rem);
+		margin-block: var(--quarter-rem);
 	}
 
 	.grid-container-checkin {
@@ -36,23 +39,18 @@
 		<div class="card-header">
 			<h2>VIN Check-In</h2>
 		</div>
-		<div class="card grid-container inset-container">
-				<!--<p>VIN:</p>
-				<input type="text" />-->
-			<form>
+		<div>
+			<div class="card inset-container">
 				<label for="vin">VIN:</label>
 				<input id="vin" name="vin" type="text" />
-			</form>
-		</div>
+				<p id="vin-feedback"></p>
+			</div>
 
-		<div class="card grid-container inset-container">
-			<!--<p>VIN:</p>
-			<input type="text" />-->
-		<form>
-			<label for="vin">VIN:</label>
-			<input id="vin" name="vin" type="text" />
-		</form>
-	</div>
+			<div class="card inset-container disable-input">
+				<label for="slot">Slot:</label>
+				<input id="slot" name="slot" type="text" />
+			</div>
+		</div>
 	</div>
 	<!--<a href="../../">Back</a>-->
 			

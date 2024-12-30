@@ -48,9 +48,11 @@
 	<!-- Custom JavaScript -->
 		<script src="js/variables.js"></script>
 		<script src="js/promises.js"></script>
+		<script src="js/templates.js"></script>
+		<script src="js/kms.js"></script>
 		<script src="js/index.js"></script>
-		<script src="js/urlRouter.js"></script>
-		<!--<script src="js/custom.js"></script>
+		<!--<script src="js/urlRouter.js"></script>
+		<script src="js/custom.js"></script>
 		<script src="js/users.js"></script>
 		<script src="js/itemAssociation.js"></script>
 		<script src="js/reports.js"></script>

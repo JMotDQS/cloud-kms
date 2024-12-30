@@ -14,6 +14,7 @@ function loadPage(param_template, param_element = 'app') {
 			}
 	});
 }
+
 function loadDialog(param_template, param_template_dir, param_load_ele, param_user_id = 0) {
 	var temp_dir = "pages/" + param_template_dir + "/";
 	if (param_template != '') {
@@ -32,6 +33,7 @@ function loadDialog(param_template, param_template_dir, param_load_ele, param_us
 		});
 	}
 }
+
 function pageCheck(param_page, param_user_id) {
 	clearTimer(g_TIMER);
 

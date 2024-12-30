@@ -1,1 +1,44 @@
-<h2>Reports</h2>
+<style>
+	.card {
+		text-align: start;
+		cursor: default;
+	}
+
+	label {
+		font-weight: 600;
+	}
+
+	.inset-container {
+		background-color: #ffffff;
+		border-color: var(--color-reports-dark);
+		display: grid;
+		gap: var(--half-rem);
+		margin-block: var(--quarter-rem);
+	}
+
+	.grid-container-reports {
+		display: grid;
+		grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr);
+		gap: var(--full-rem);
+	}
+
+	.card-header {
+		grid-column: 1/-1;
+	}
+	
+	@media (width > 899px) {
+		.main-container {
+			width: 900px;
+		}
+	}
+</style>
+
+<div id="checkin" class="grid-container">
+	
+	<div class="grid-container-checkin card card-reports disable-hover">
+		<div class="card-header">
+			<h2>Reports</h2>
+		</div>
+	</div>
+
+</div>

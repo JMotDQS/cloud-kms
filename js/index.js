@@ -1,12 +1,11 @@
 $(document).ready(function() {
-	$('.nav-logo').on('click', function() {
+	/*$('.nav-logo').on('click', function() {
 		refreshApp();
-	});
+	});*/
 	refreshApp();
 });
 
 function refreshApp() {
-	console.log("refreshApp() called");
 	g_CURRENT_LOGIN_USER_ID = 0;
 	g_USER_SEARCH = [];
 	g_NO_SEARCH_RESULTS = '';
@@ -140,9 +139,7 @@ function setFocus(param_ele) {
 }
 
 function toggleDisabled(param_ele, param_disabled = false) {
-	console.log("toggleDisabled() called");
     document.getElementById(param_ele).setAttribute('disabled', param_disabled);
-	//$(param_ele).prop('disabled', param_disabled);
 }
 function toggleDisplay(param_ele, param_class, param_flag) {
 	if (param_flag) {
@@ -170,17 +167,16 @@ function keyPressEvent(e) {
 	clearTimer(g_TIMER); // prevent errant multiple timeouts from being generated
 
 	switch(e.data.page) {
-		case 'checkIn':
+		case 'checkin':
 			switch(e.data.inputEl) {
 				case 'vin':
-					console.log("key pressed");
-					feedBackColoring('#vin-scan-feedback', 'blue');
-					$('#vin-scan-feedback').html('Loading VIN scan, please wait...');
+					//feedBackColoring('#vin-scan-feedback', 'blue');
+					//$('#vin-scan-feedback').html('Loading VIN scan, please wait...');
 					break;
 
 				case 'slot':
-					feedBackColoring('#bin-scan-feedback', 'blue');
-					$('#bin-scan-feedback').html('Loading bin scan, please wait...');
+					//feedBackColoring('#bin-scan-feedback', 'blue');
+					//$('#bin-scan-feedback').html('Loading bin scan, please wait...');
 					break;
 			}
 			break;
@@ -229,5 +225,5 @@ function cleanVIN(param_vin_scan) {
 }
 
 function consoleReporting(param) {
-	console.log(param);
+	//console.log(param);
 }

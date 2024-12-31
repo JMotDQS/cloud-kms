@@ -115,7 +115,7 @@ body {
 .card-checkin:not(.disable-hover):hover {
 	background-color: var(--color-checkin-hover);
 }
-.card-checkin:hover .card-icon {
+.card-checkin:not(.disable-hover):hover .card-icon {
 	color: var(--color-content-hover);
 }
 
@@ -130,7 +130,7 @@ body {
 .card-checkout:not(.disable-hover):hover {
 	background-color: var(--color-checkout-hover);
 }
-.card-checkout:hover .card-icon {
+.card-checkout:not(.disable-hover):hover .card-icon {
 	color: var(--color-content-hover);
 }
 
@@ -145,7 +145,7 @@ body {
 .card-labels:not(.disable-hover):hover {
 	background-color: var(--color-labels-hover);
 }
-.card-labels:hover .card-icon {
+.card-labels:not(.disable-hover):hover .card-icon {
 	color: var(--color-content-hover);
 }
 
@@ -160,7 +160,7 @@ body {
 .card-search:not(.disable-hover):hover {
 	background-color: var(--color-search-hover);
 }
-.card-search:hover .card-icon {
+.card-search:not(.disable-hover):hover .card-icon {
 	color: var(--color-content-hover);
 }
 
@@ -175,7 +175,7 @@ body {
 .card-reports:not(.disable-hover):hover {
 	background-color: var(--color-reports-hover);
 }
-.card-reports:hover .card-icon {
+.card-reports:not(.disable-hover):hover .card-icon {
 	color: var(--color-content-hover);
 }
 
@@ -190,23 +190,18 @@ body {
 .card-dashboard:not(.disable-hover):hover {
 	background-color: var(--color-dashboard-hover);
 }
-.card-dashboard:hover .card-icon {
+.card-dashboard:not(.disable-hover):hover .card-icon {
 	color: var(--color-content-hover);
 }
 
-.card-containers {
-	border-color: var(--color-containers-dark);
-	background-color: var(--color-containers-background);
+.card-template-header {
+	grid-column: 1/-1;
+	display: inline-flex;
 }
-.card-containers .card-icon {
-	font-size: calc(var(--full-rem) * 2);
-	color: var(--color-containers-dark);
-}
-.card-containers:hover {
-	background-color: var(--color-containers-hover);
-}
-.card-containers:hover .card-icon {
-	color: var(--color-content-hover);
+.card-template-header .card-icon {
+	font-size: calc(var(--full-rem)* 1.5);
+	margin-inline-end: var(--half-rem);
+	margin-block-start: calc(var(--quarter-rem) / 3);
 }
 
 .disable-hover {

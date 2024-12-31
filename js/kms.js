@@ -1,10 +1,12 @@
 function setIndexContent() {
 	getSectionsPromise().then((resolve) => {
 		var temp_html = '';
+		g_SECTIONS = [];
+		g_SECTIONS = resolve['sections'];
 		if(resolve['conn']) {
-			resolve['sections'].forEach(section => {
+			g_SECTIONS.forEach((section, index) => {
 				var cur_section = section.section.replaceAll(' ','').toLowerCase();
-				temp_html += `<div id="${section.pk_id}" class="card ${'card-' + cur_section}" data-page="${cur_section}" onclick="sectionClick(this.dataset.page)">`;
+				temp_html += `<div id="${section.pk_id}" class="card ${'card-' + cur_section}" data-page="${cur_section}" data-index="${index}" onclick="sectionClick(this.dataset)">`;
 					temp_html += `<h1>${section.section}</h1>`;
 					temp_html += `<p class="card-body">${section.body_copy}</p>`;
 					temp_html += `<p class="card-icon"><i class="${section.icon}"></i></p>`;
@@ -22,5 +24,6 @@ function setIndexContent() {
 }
 
 function sectionClick(data) {
-	loadPage(data);
+	g_CHOSEN_SECTION = parseInt(data.index);
+	loadPage(data.page);
 }

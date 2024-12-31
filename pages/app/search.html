@@ -21,10 +21,6 @@
 		grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr);
 		gap: var(--full-rem);
 	}
-
-	.card-header {
-		grid-column: 1/-1;
-	}
 	
 	@media (width > 899px) {
 		.main-container {
@@ -36,8 +32,8 @@
 <div id="checkin" class="grid-container">
 	
 	<div class="grid-container-checkin card card-search disable-hover">
-		<div class="card-header">
-			<h2>Search</h2>
+		<div class="card-template-header">
+			<i id="icon" class="card-icon"></i><h2 id="title"></h2>
 		</div>
 	</div>
 

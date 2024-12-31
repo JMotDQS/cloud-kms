@@ -47,6 +47,27 @@ function pageCheck(param_page, param_user_id) {
 			toggleDisabled('slot', true);
 			setKeyEvents(param_page, 'vin');
 			setKeyEvents(param_page, 'slot');
+			setTemplateTitle();
+			break;
+
+		case "checkout":
+			setTemplateTitle();
+			break;
+
+		case "labels":
+			setTemplateTitle();
+			break;
+
+		case "search":
+			setTemplateTitle();
+			break;
+
+		case "reports":
+			setTemplateTitle();
+			break;
+
+		case "dashboard":
+			setTemplateTitle();
 			break;
 		
 		case "addUser":
@@ -113,4 +134,12 @@ function pageCheck(param_page, param_user_id) {
 			BULK_ADD_USER_DIALOG.showModal();
 			break;
 	}
+}
+
+function setTemplateTitle() {
+	document.getElementById('title').textContent = g_SECTIONS[g_CHOSEN_SECTION].section;
+	var tempClassArray = g_SECTIONS[g_CHOSEN_SECTION].icon.split(" ");
+	tempClassArray.forEach((myClass) => {
+		document.getElementById('icon').classList.add(myClass);
+	});
 }

@@ -21,18 +21,8 @@
 	</head>
 
 	<body id="home">
-		<!--<header>
-			<img id="logo-header" class="nav-logo" src="images/DQS_logo.svg">
-
-			<nav id="nav"></nav>
-		</header>
-		<a href="pages/app/home.html">Home</a>
-		<a href="pages/app/checkin.html">Check In</a>
-		<a href="pages/app/checkout.html">Check Out</a>
-		<a href="pages/app/labels.html">Labels</a>-->
 		<nav id="nav"></nav>
 		<div id="app" class="main-container"></div>
-		<!--<div id="search-results" class="search-results"></div>-->
 
 		<dialog id="dialog_user" class="g_dialog dialog_user"></dialog>
 		<dialog id="dialog_login" class="g_dialog dialog_login"></dialog>

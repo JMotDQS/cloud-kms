@@ -1,12 +1,17 @@
-function loadPage(param_template, param_element = 'app') {
+function loadPage(param_template = 'sectionTemplate', param_element = 'app') {
 	var temp_dir = "";
 	temp_dir = `pages/${param_element}/${param_template}.html?nc=${(Math.random() * 1000000)}`
+	//temp_dir = `pages/${param_element}/sectionTemplate.html?nc=${(Math.random() * 1000000)}`
 
 	$('#' + param_element).load(temp_dir,
 		function(responseTxt, statusTxt, xhr) {
 			switch(statusTxt) {
 				case "success":
-					pageCheck(param_template);
+					if(param_template == 'kms') {
+						pageCheck(param_template);
+					} else {
+						pageCheck(g_SECTIONS[g_CHOSEN_SECTION].section.replaceAll(' ','').toLowerCase());
+					}
 					break;
 
 				case "error":
@@ -43,11 +48,7 @@ function pageCheck(param_page, param_user_id) {
 			break;
 
 		case "checkin":
-			setFocus('vin');
-			toggleDisabled('slot', true);
-			setKeyEvents(param_page, 'vin');
-			setKeyEvents(param_page, 'slot');
-			setTemplate(param_page);
+			setTemplate();
 			break;
 
 		case "checkout":
@@ -136,11 +137,43 @@ function pageCheck(param_page, param_user_id) {
 	}
 }
 
-function setTemplate(param_page) {
+function setTemplate() {
 	document.getElementById('title').textContent = g_SECTIONS[g_CHOSEN_SECTION].section;
 	var tempClassArray = g_SECTIONS[g_CHOSEN_SECTION].icon.split(" ");
 	tempClassArray.forEach((myClass) => {
 		document.getElementById('icon').classList.add(myClass);
 	});
-	document.getElementById('card-template-container').classList.add('card-' + param_page);
+	var temp_page = g_SECTIONS[g_CHOSEN_SECTION].section.replaceAll(' ','').toLowerCase();
+	document.getElementById('card-template-container').classList.add('card-' + temp_page);
+
+	var temp_html = '';
+	switch(temp_page) {
+		case 'checkin':
+			temp_html += `
+				<div>
+					<div class="card inset-container">
+						<label for="vin">VIN:</label>
+						<input id="vin" name="vin" type="text" />
+						<p id="vin-feedback"></p>
+					</div>
+
+					<div class="card inset-container disable-input">
+						<label for="slot">Slot:</label>
+						<input id="slot" name="slot" type="text" />
+					</div>
+				</div>
+
+				<div>
+					<div class="card inset-container">
+						<h3>Available Slots by Case</h3>
+					</div>
+				</div>`;
+			document.getElementById('card-template-body').innerHTML = temp_html;
+
+			setFocus('vin');
+			toggleDisabled('slot', true);
+			setKeyEvents(param_page, 'vin');
+			setKeyEvents(param_page, 'slot');
+			break;
+	}
 }

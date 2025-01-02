@@ -25,5 +25,5 @@ function setIndexContent() {
 
 function sectionClick(data) {
 	g_CHOSEN_SECTION = parseInt(data.index);
-	loadPage(data.page);
+	loadPage();
 }

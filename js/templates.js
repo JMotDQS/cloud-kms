@@ -47,27 +47,27 @@ function pageCheck(param_page, param_user_id) {
 			toggleDisabled('slot', true);
 			setKeyEvents(param_page, 'vin');
 			setKeyEvents(param_page, 'slot');
-			setTemplateTitle();
+			setTemplate(param_page);
 			break;
 
 		case "checkout":
-			setTemplateTitle();
+			setTemplate();
 			break;
 
 		case "labels":
-			setTemplateTitle();
+			setTemplate();
 			break;
 
 		case "search":
-			setTemplateTitle();
+			setTemplate();
 			break;
 
 		case "reports":
-			setTemplateTitle();
+			setTemplate();
 			break;
 
 		case "dashboard":
-			setTemplateTitle();
+			setTemplate();
 			break;
 		
 		case "addUser":
@@ -136,10 +136,11 @@ function pageCheck(param_page, param_user_id) {
 	}
 }
 
-function setTemplateTitle() {
+function setTemplate(param_page) {
 	document.getElementById('title').textContent = g_SECTIONS[g_CHOSEN_SECTION].section;
 	var tempClassArray = g_SECTIONS[g_CHOSEN_SECTION].icon.split(" ");
 	tempClassArray.forEach((myClass) => {
 		document.getElementById('icon').classList.add(myClass);
 	});
+	document.getElementById('card-template-container').classList.add('card-' + param_page);
 }

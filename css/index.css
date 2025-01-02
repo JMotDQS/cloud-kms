@@ -78,6 +78,10 @@ body {
 	font-size: var(--three-quarter-rem);
 }
 
+label {
+	font-weight: 600;
+}
+
 .main-container {
 	padding-inline: var(--full-rem);
 	margin-inline: auto;
@@ -85,10 +89,11 @@ body {
 
 .grid-container {
 	display: grid;
+	grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr);
 	margin-inline: auto;
 	gap: var(--full-rem);
 	justify-content: stretch;
-	align-items: center;
+	/*align-items: center;*/
 }
 
 .card {
@@ -102,6 +107,14 @@ body {
 .card-body {
 	font-weight: 500;
 	font-size: var(--full-rem);
+}
+
+.inset-container {
+	background-color: #ffffff;
+	border-color: var(--color-checkin-dark);
+	display: grid;
+	gap: var(--half-rem);
+	margin-block: var(--quarter-rem);
 }
 
 .card-checkin {
@@ -218,18 +231,30 @@ body {
 .feedback-red {
 	color: #ff0000;
 	font-weight: 600;
-  }
-  .feedback-green {
+}
+.feedback-green {
 	color: #078a07;
 	font-weight: 600;
-  }
-  .feedback-blue {
+}
+.feedback-blue {
 	color: #3e7fe7;
 	font-weight: 600;
-  }
+}
 
-@media (width > 1099px) {
+@media (width < 600px) {
+	.grid-container {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (width > 899px) {
+	.main-container {
+		width: 900px;
+	}
+}
+
+/*@media (width > 1099px) {
 	.main-container {
 		width: 1100px;
 	}
-}
+}*/

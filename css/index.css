@@ -78,6 +78,10 @@ body {
 	font-size: var(--three-quarter-rem);
 }
 
+label {
+	font-weight: 600;
+}
+
 .main-container {
 	padding-inline: var(--full-rem);
 	margin-inline: auto;

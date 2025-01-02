@@ -1,3 +1,40 @@
+const loadTemplate = (param_template) => {
+	switch(param_template) {
+		case 'kms':
+			document.getElementById("card-template-container").innerHTML = kmsTemplate(param_template);
+			break;
+		
+		case 'checkin':
+			document.getElementById("card-template-container").innerHTML = checkinTemplate(param_template);
+			setFocus('vin');
+			toggleDisabled('slot', true);
+			setKeyEvents(param_template, 'vin');
+			setKeyEvents(param_template, 'slot');
+			makeVisible('card-template-container');
+			break;
+
+		case 'checkout':
+			document.getElementById("card-template-container").innerHTML = checkoutTemplate(param_template);
+			break;
+		
+		case 'labels':
+			document.getElementById("card-template-container").innerHTML = labelsTemplate(param_template);
+			break;
+
+		case 'search':
+			document.getElementById("card-template-container").innerHTML = searchTemplate(param_template);
+			break;
+
+		case 'reports':
+			document.getElementById("card-template-container").innerHTML = reportsTemplate(param_template);
+			break;
+
+		case 'dashboard':
+			document.getElementById("card-template-container").innerHTML = dashboardTemplate(param_template);
+			break;
+	}
+}
+
 function loadPage(param_template, param_element = 'app') {
 	var temp_dir = "";
 	temp_dir = `pages/${param_element}/${param_template}.html?nc=${(Math.random() * 1000000)}`

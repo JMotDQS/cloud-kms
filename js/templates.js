@@ -1,4 +1,4 @@
-function loadPage(param_template = 'sectionTemplate', param_element = 'app') {
+function loadPage(param_template, param_element = 'app') {
 	var temp_dir = "";
 	temp_dir = `pages/${param_element}/${param_template}.html?nc=${(Math.random() * 1000000)}`
 	//temp_dir = `pages/${param_element}/sectionTemplate.html?nc=${(Math.random() * 1000000)}`
@@ -12,6 +12,7 @@ function loadPage(param_template = 'sectionTemplate', param_element = 'app') {
 					} else {
 						pageCheck(g_SECTIONS[g_CHOSEN_SECTION].section.replaceAll(' ','').toLowerCase());
 					}
+					//pageCheck(g_CURRENT_PAGE);
 					break;
 
 				case "error":
@@ -41,6 +42,7 @@ function loadDialog(param_template, param_template_dir, param_load_ele, param_us
 
 function pageCheck(param_page, param_user_id) {
 	clearTimer(g_TIMER);
+	console.log("pageCheck():param_page:", param_page);
 
 	switch(param_page) {
 		case "kms":
@@ -172,8 +174,8 @@ function setTemplate() {
 
 			setFocus('vin');
 			toggleDisabled('slot', true);
-			setKeyEvents(param_page, 'vin');
-			setKeyEvents(param_page, 'slot');
+			setKeyEvents(temp_page, 'vin');
+			setKeyEvents(temp_page, 'slot');
 			break;
 	}
 }

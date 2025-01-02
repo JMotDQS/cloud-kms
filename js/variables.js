@@ -22,6 +22,7 @@ var g_CURRENT_LOGIN_USER_ID = 0;
 var g_USER_SEARCH = [];
 var g_NO_SEARCH_RESULTS = '';
 var g_SECTIONS = [];
+var g_CONNECTION;
 var g_CHOSEN_SECTION = -1;
 var g_COMPANIES = [];
 var g_NEW_LOCATION = '';

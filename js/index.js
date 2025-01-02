@@ -2,6 +2,7 @@ $(document).ready(function() {
 	/*$('.nav-logo').on('click', function() {
 		refreshApp();
 	});*/
+	//document.getElementById('app').textContent = '';
 	refreshApp();
 });
 
@@ -14,16 +15,27 @@ function refreshApp() {
 	g_ASSOCIATE_ITEMS = '';
 	g_PRINT_USER_OBJ = {};
 
-	document.getElementById('nav').textContent = '';
-	document.getElementById('app').textContent = '';
-	loadPage('nav', g_NAV);
-	loadPage('kms');
+	getSections();
+}
+
+function getSections() {
+	console.log("getSections() called");
+	getSectionsPromise().then((resolve) => {
+		g_SECTIONS = [];
+		g_SECTIONS = resolve['sections'];
+		g_CONNECTION = resolve['conn'];
+		//loadPage('kms');
+		pageCheck('kms');
+	}).catch(function(reject) {
+		consoleReporting(reject);
+	}).finally(function() {
+		consoleReporting("Moving On.");
+	});
 }
 
 function getCompanies() {
 	getCompaniesPromise().then(function(resolve) {
 		console.log("getCompaniesPromise:Success");
-		//loadPage('nav', g_NAV);
 	}).catch(function(reject) {
 		console.log("reject:", reject);
 	}).finally(function() {
@@ -147,6 +159,10 @@ function toggleDisplay(param_ele, param_class, param_flag) {
 	} else {
 		$(param_ele).removeClass(param_class);
 	}
+}
+
+function makeVisible(param_ele) {
+	document.getElementById(param_ele).classList.remove('invisible');
 }
 
 function checkIfDisabled(param_element) {

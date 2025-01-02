@@ -21,8 +21,20 @@
 	</head>
 
 	<body id="home">
-		<nav id="nav"></nav>
-		<div id="app" class="main-container"></div>
+		<nav id="nav">
+			<div class="nav-logo-container">
+				<img src="images/DQS_logo.svg" id="logo-header" class="nav-logo" data-page='kms' alt="" />
+			</div>
+			<ul class="nav-links">
+				<a class="navbar-item navbar-link" data-page="kms" onclick="loadPage(this.dataset.page)">KMS</a>
+				<li class="navbar-item nav-item-divider">|</li>
+				<a class="navbar-item navbar-link" data-page="docs" onclick="loadPage(this.dataset.page)">Docs</a>
+				<li class="navbar-item nav-item-divider">|</li>
+			</ul>
+		</nav>
+		<div id="app" class="main-container">
+			<div id="card-template-container" class="invisible grid-container disable-hover"></div>
+		</div>
 
 		<dialog id="dialog_user" class="g_dialog dialog_user"></dialog>
 		<dialog id="dialog_login" class="g_dialog dialog_login"></dialog>

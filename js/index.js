@@ -1,8 +1,4 @@
 $(document).ready(function() {
-	/*$('.nav-logo').on('click', function() {
-		refreshApp();
-	});*/
-	//document.getElementById('app').textContent = '';
 	refreshApp();
 });
 
@@ -19,13 +15,10 @@ function refreshApp() {
 }
 
 function getSections() {
-	console.log("getSections() called");
 	getSectionsPromise().then((resolve) => {
 		g_SECTIONS = [];
 		g_SECTIONS = resolve['sections'];
 		g_CONNECTION = resolve['conn'];
-		//loadPage('kms');
-		//pageCheck('kms');
 		loadTemplate('kms');
 	}).catch(function(reject) {
 		consoleReporting(reject);
@@ -72,45 +65,17 @@ function reverseEntities(param_string) {
 	}
 }
 
-function feedBackColoring(param_ele, param_class = '', param_copy = '', param_color = 'default') {
-	//clearElementClassList(param_ele);
-	//document.getElementById(clearElementClassList(param_ele)).classList.add(param_class);
-	document.getElementById('vin-feedback').textContent = "Hello World"
-	clearElementClassList(param_ele, param_copy).classList.add(param_class);
-	/*document.getElementById(param_ele).classList = '';
-	document.getElementById(param_ele).classList.add(param_class);*/
-	/*switch(param_color) {
-		case 'red':
-			document.getElementById(param_ele).classList.remove();
-			$(param_ele).removeClass('feedback-green');
-			$(param_ele).removeClass('feedback-blue');
-			$(param_ele).addClass('feedback-red');
-			break;
-
-		case 'green':
-			$(param_ele).removeClass('feedback-red');
-			$(param_ele).removeClass('feedback-blue');
-			$(param_ele).addClass('feedback-green');
-			break;
-
-		case 'blue':
-			$(param_ele).removeClass('feedback-red');
-			$(param_ele).removeClass('feedback-green');
-			$(param_ele).addClass('feedback-blue');
-			break;
-
-		default:
-			$(param_ele).removeClass('feedback-red');
-			$(param_ele).removeClass('feedback-green');
-			$(param_ele).removeClass('feedback-blue');
-			break;
-	}*/
+function feedBackColoring(param_ele, param_color = 'default') {
+	clearClassList(param_ele).classList.add('feedback-' + param_color);
 }
 
-function clearElementClassList(param_ele, param_copy) {
-	document.getElementById('vin-feedback').textContent = param_copy;
+function clearClassList(param_ele, param_copy) {
 	document.getElementById(param_ele).classList = '';
 	return document.getElementById(param_ele);
+}
+
+function setElementCopy(param_ele, param_copy = '') {
+	document.getElementById(param_ele).textContent = param_copy;
 }
 
 function sliderSet(param_id, param_copy) {
@@ -186,17 +151,16 @@ function keyPressEvent(e) {
 	e.preventDefault;
 	clearTimer(g_TIMER); // prevent errant multiple timeouts from being generated
 
+	const myEle = document.getElementById(e.data.inputEl);
 	switch(e.data.page) {
 		case 'checkin':
 			switch(e.data.inputEl) {
 				case 'vin':
-					//feedBackColoring('#vin-scan-feedback', 'blue');
-					//$('#vin-scan-feedback').html('Loading VIN scan, please wait...');
+					feedBackColoring('vin-feedback', 'blue');
+					setElementCopy(myEle.id + '-feedback', 'Checking VIN...');
 					break;
 
 				case 'slot':
-					//feedBackColoring('#bin-scan-feedback', 'blue');
-					//$('#bin-scan-feedback').html('Loading bin scan, please wait...');
 					break;
 			}
 			break;
@@ -205,17 +169,34 @@ function keyPressEvent(e) {
 function keyUpEvent(e) {
 	e.preventDefault;
 	clearTimer(g_TIMER); // prevent errant multiple timeouts from being generated
-
+	const hasInput = document.getElementById(e.data.inputEl).value != '';
+	const myEle = document.getElementById(e.data.inputEl);
 	switch(e.data.page) {
 		case 'checkin':
 			switch(e.data.inputEl) {
 				case 'vin':
-					//toggleDisabled('.button-container #clear-button', false);
 					g_TIMER = window.setTimeout(() => {
-						toggleDisabled('vin', true);
-						toggleDisabled('slot', false);
-						document.getElementById('container-slot').classList.remove('disable-input');
-						setFocus('slot');
+						if (hasInput) {
+							if (cleanVIN(document.getElementById(e.data.inputEl).value)) {
+								feedBackColoring(myEle.id + '-feedback', 'green');
+								setElementCopy(myEle.id + '-feedback', 'VIN is Validated.');
+								feedBackColoring(myEle.id, 'green');
+								setElementCopy(myEle.id, myEle.value);
+								toggleDisabled('vin', true);
+								toggleDisabled('slot', false);
+								document.getElementById('container-slot').classList.remove('disable-input');
+								setFocus('slot');
+							} else {
+								feedBackColoring(myEle.id + '-feedback', 'red');
+								setElementCopy(myEle.id + '-feedback', 'Invalid VIN');
+								feedBackColoring(myEle.id, 'red');
+								setElementCopy(myEle.id, myEle.value);
+							}
+						} else {
+							clearClassList(myEle.id);
+							clearClassList(myEle.id + '-feedback');
+							setElementCopy(myEle.id + '-feedback');
+						}
 					}, (g_TIMEOUT_VAL * parseInt(e.data.timerMultiplier)));
 					break;
 
@@ -231,16 +212,15 @@ function keyUpEvent(e) {
 }
 
 function cleanVIN(param_vin_scan) {
-	var temp_vin
+	g_CURRENT_VIN = param_vin_scan;
 	if (param_vin_scan.charAt(0).toUpperCase() === "I") {
-		temp_vin = param_vin_scan.substring(1);
-	} else {
-		temp_vin = param_vin_scan;
+		g_CURRENT_VIN = param_vin_scan.substring(1);
 	}
 
-	if(parseInt(temp_vin.length) === g_VIN_LENGTH) {
-		return temp_vin.toUpperCase();
+	if(parseInt(g_CURRENT_VIN.length) === g_VIN_LENGTH) {
+		return g_CURRENT_VIN.toUpperCase();
 	} else {
+		g_CURRENT_VIN = '';
 		return false;
 	}
 }

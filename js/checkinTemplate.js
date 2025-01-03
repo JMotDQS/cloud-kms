@@ -19,6 +19,7 @@ function checkinTemplate(param_template) {
 					<div id="container-slot" class="card inset-container disable-input">
 						<label for="slot">Slot:</label>
 						<input id="slot" name="slot" type="text" />
+						<p id="slot-feedback"></p>
 					</div>
 				</div>
 

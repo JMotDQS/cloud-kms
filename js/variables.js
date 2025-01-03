@@ -28,13 +28,15 @@ var g_COMPANIES = [];
 var g_NEW_LOCATION = '';
 var g_ASSOCIATE_ITEMS = '';
 var g_PRINT_USER_OBJ = {};
+var g_CURRENT_VIN = '';
 const g_MAILBOX_LENGTH = 8;
 const g_TIMEOUT_VAL = 500;
 const g_RESET_TIMEOUT_VAL = 2000;
 const g_APP = 'app';
 const g_NAV = 'nav';
 const g_DIALOG = 'dialog';
-const g_VER = '2.2'; // Physical Audit export now includes system report without duplicate VINs
+const g_VER = '2.2.3';
+const g_VIN_LENGTH = 17;
 
 const g_CONNECTION_ERROR_COPY = 'An error occured connecting to the data'
 

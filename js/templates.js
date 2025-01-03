@@ -1,15 +1,24 @@
 const loadTemplate = (param_template) => {
-	switch(param_template) {
+	var temp_page = param_template;
+	if (param_template.page != undefined) {
+		temp_page = param_template.page;
+		g_CHOSEN_SECTION = parseInt(param_template.index);
+	}
+	switch(temp_page) {
 		case 'kms':
-			document.getElementById("card-template-container").innerHTML = kmsTemplate(param_template);
+			document.getElementById("card-template-container").innerHTML = kmsTemplate(temp_page);
+			removeClass('disable-hover');
+			setClasses();
 			break;
 		
 		case 'checkin':
 			document.getElementById("card-template-container").innerHTML = checkinTemplate(param_template);
+			document.getElementById('title').textContent = g_SECTIONS[g_CHOSEN_SECTION].section;
+			setClasses(temp_page);
 			setFocus('vin');
 			toggleDisabled('slot', true);
-			setKeyEvents(param_template, 'vin');
-			setKeyEvents(param_template, 'slot');
+			setKeyEvents(temp_page, 'vin');
+			setKeyEvents(temp_page, 'slot');
 			makeVisible('card-template-container');
 			break;
 
@@ -33,6 +42,19 @@ const loadTemplate = (param_template) => {
 			document.getElementById("card-template-container").innerHTML = dashboardTemplate(param_template);
 			break;
 	}
+}
+
+const removeClass = (param_class) => {
+	document.getElementById('card-template-container').classList.remove(param_class);
+}
+
+const setClasses = (param_page_class) => {
+	document.getElementById("card-template-container").classList = [];
+	document.getElementById("card-template-container").classList.add('grid-container', 'card');
+	if (param_page_class != undefined) {
+		document.getElementById("card-template-container").classList.add('disable-hover', 'card-' + param_page_class);
+	}
+	
 }
 
 function loadPage(param_template, param_element = 'app') {

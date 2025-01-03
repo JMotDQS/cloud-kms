@@ -26,9 +26,9 @@
 				<img src="images/DQS_logo.svg" id="logo-header" class="nav-logo" data-page='kms' alt="" />
 			</div>
 			<ul class="nav-links">
-				<a class="navbar-item navbar-link" data-page="kms" onclick="loadPage(this.dataset.page)">KMS</a>
+				<a class="navbar-item navbar-link" data-page="kms" onclick="loadTemplate(this.dataset.page)">KMS</a>
 				<li class="navbar-item nav-item-divider">|</li>
-				<a class="navbar-item navbar-link" data-page="docs" onclick="loadPage(this.dataset.page)">Docs</a>
+				<a class="navbar-item navbar-link" data-page="docs" onclick="loadTemplate(this.dataset.page)">Docs</a>
 				<li class="navbar-item nav-item-divider">|</li>
 			</ul>
 		</nav>
@@ -51,8 +51,9 @@
 		<script src="js/variables.js"></script>
 		<script src="js/promises.js"></script>
 		<script src="js/templates.js"></script>
-		<script src="js/kms.js"></script>
+		<!--<script src="js/kms.js"></script>-->
 		<script src="js/kmsTemplate.js"></script>
+		<script src="js/checkinTemplate.js"></script>
 		<script src="js/index.js"></script>
 		<!--<script src="js/urlRouter.js"></script>
 		<script src="js/custom.js"></script>

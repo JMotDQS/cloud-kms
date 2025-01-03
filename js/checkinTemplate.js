@@ -1,13 +1,22 @@
 function checkinTemplate(param_template) {
 	var temp_html = '';
-	temp_html += `<div>
-					<div class="card inset-container">
+	temp_html += `<style>
+					.card {
+						text-align: start;
+						cursor: default;
+					}
+				</style>
+				<div class="card-template-header">
+					<i id="icon" class="card-icon"></i><h2 id="title"></h2>
+				</div>
+				<div>
+					<div id="container-vin" class="card inset-container">
 						<label for="vin">VIN:</label>
 						<input id="vin" name="vin" type="text" />
 						<p id="vin-feedback"></p>
 					</div>
 
-					<div class="card inset-container disable-input">
+					<div id="container-slot" class="card inset-container disable-input">
 						<label for="slot">Slot:</label>
 						<input id="slot" name="slot" type="text" />
 					</div>
@@ -18,7 +27,5 @@ function checkinTemplate(param_template) {
 						<h3>Available Slots by Case</h3>
 					</div>
 				</div>`;
-	
-	makeVisible('card-template-container');
 	return temp_html;
 }

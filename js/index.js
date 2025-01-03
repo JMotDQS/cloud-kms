@@ -25,7 +25,8 @@ function getSections() {
 		g_SECTIONS = resolve['sections'];
 		g_CONNECTION = resolve['conn'];
 		//loadPage('kms');
-		pageCheck('kms');
+		//pageCheck('kms');
+		loadTemplate('kms');
 	}).catch(function(reject) {
 		consoleReporting(reject);
 	}).finally(function() {
@@ -151,7 +152,10 @@ function setFocus(param_ele) {
 }
 
 function toggleDisabled(param_ele, param_disabled = false) {
-    document.getElementById(param_ele).setAttribute('disabled', param_disabled);
+	document.getElementById(param_ele).removeAttribute('disabled');
+	if (param_disabled) {
+		document.getElementById(param_ele).setAttribute('disabled', param_disabled);
+	}
 }
 function toggleDisplay(param_ele, param_class, param_flag) {
 	if (param_flag) {
@@ -209,8 +213,9 @@ function keyUpEvent(e) {
 					//toggleDisabled('.button-container #clear-button', false);
 					g_TIMER = window.setTimeout(() => {
 						toggleDisabled('vin', true);
-						/*toggleDisabled('#vinNum', true);
-						cleanVIN();*/
+						toggleDisabled('slot', false);
+						document.getElementById('container-slot').classList.remove('disable-input');
+						setFocus('slot');
 					}, (g_TIMEOUT_VAL * parseInt(e.data.timerMultiplier)));
 					break;
 

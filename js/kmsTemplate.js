@@ -3,7 +3,8 @@ function kmsTemplate(param_template) {
 	if(g_CONNECTION) {
 		g_SECTIONS.forEach((section, index) => {
 			var cur_section = section.section.replaceAll(' ','').toLowerCase();
-			temp_html += `<div id="${section.pk_id}" class="card ${'card-' + cur_section}" data-page="${cur_section}" data-index="${index}" onclick="sectionClick(this.dataset)">`;
+			temp_html += `<div id="${section.pk_id}" class="card ${'card-' + cur_section}" data-page="${cur_section}" data-index="${index}" onclick="loadTemplate(this.dataset)">`;
+			//temp_html += `<div id="${section.pk_id}" class="card ${'card-' + cur_section}" data-page="${cur_section}" data-index="${index}" onclick="sectionClick(this.dataset)">`;
 				temp_html += `<h1>${section.section}</h1>`;
 				temp_html += `<p class="card-body">${section.body_copy}</p>`;
 				temp_html += `<p class="card-icon"><i class="${section.icon}"></i></p>`;
@@ -19,5 +20,5 @@ function kmsTemplate(param_template) {
 
 function sectionClick(data) {
 	g_CHOSEN_SECTION = parseInt(data.index);
-	loadPage(data.page);
+	//loadPage(data.page);
 }

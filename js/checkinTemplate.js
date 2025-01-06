@@ -1,4 +1,4 @@
-function checkinTemplate(param_template) {
+function checkinTemplate() {
 	var temp_html = '';
 	temp_html += `<style>
 					.card {

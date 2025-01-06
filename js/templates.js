@@ -6,13 +6,13 @@ const loadTemplate = (param_template) => {
 	}
 	switch(temp_page) {
 		case 'kms':
-			document.getElementById("card-template-container").innerHTML = kmsTemplate(temp_page);
+			document.getElementById("card-template-container").innerHTML = kmsTemplate();
 			removeClass('disable-hover');
 			setClasses();
 			break;
 		
 		case 'checkin':
-			document.getElementById("card-template-container").innerHTML = checkinTemplate(param_template);
+			document.getElementById("card-template-container").innerHTML = checkinTemplate();
 			document.getElementById('title').textContent = g_SECTIONS[g_CHOSEN_SECTION].section;
 			setClasses(temp_page);
 			setFocus('vin');
@@ -54,9 +54,11 @@ const setClasses = (param_page_class) => {
 	if (param_page_class != undefined) {
 		document.getElementById("card-template-container").classList.add('disable-hover', 'card', 'card-' + param_page_class);
 	}
-	
 }
 
+
+
+/*
 function loadPage(param_template, param_element = 'app') {
 	var temp_dir = "";
 	temp_dir = `pages/${param_element}/${param_template}.html?nc=${(Math.random() * 1000000)}`
@@ -79,7 +81,8 @@ function loadPage(param_template, param_element = 'app') {
 			}
 	});
 }
-
+*/
+/*
 function loadDialog(param_template, param_template_dir, param_load_ele, param_user_id = 0) {
 	var temp_dir = "pages/" + param_template_dir + "/";
 	if (param_template != '') {
@@ -98,7 +101,8 @@ function loadDialog(param_template, param_template_dir, param_load_ele, param_us
 		});
 	}
 }
-
+*/
+/*
 function pageCheck(param_page, param_user_id) {
 	clearTimer(g_TIMER);
 	console.log("pageCheck():param_page:", param_page);
@@ -197,7 +201,8 @@ function pageCheck(param_page, param_user_id) {
 			break;
 	}
 }
-
+*/
+/*
 function setTemplate() {
 	document.getElementById('title').textContent = g_SECTIONS[g_CHOSEN_SECTION].section;
 	var tempClassArray = g_SECTIONS[g_CHOSEN_SECTION].icon.split(" ");
@@ -238,3 +243,4 @@ function setTemplate() {
 			break;
 	}
 }
+*/

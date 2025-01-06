@@ -82,7 +82,7 @@ function loadPage(param_template, param_element = 'app') {
 	});
 }
 */
-/*
+
 function loadDialog(param_template, param_template_dir, param_load_ele, param_user_id = 0) {
 	var temp_dir = "pages/" + param_template_dir + "/";
 	if (param_template != '') {
@@ -101,13 +101,13 @@ function loadDialog(param_template, param_template_dir, param_load_ele, param_us
 		});
 	}
 }
-*/
-/*
+
 function pageCheck(param_page, param_user_id) {
 	clearTimer(g_TIMER);
 	console.log("pageCheck():param_page:", param_page);
 
 	switch(param_page) {
+		/*
 		case "kms":
 			setIndexContent();
 			break;
@@ -146,6 +146,7 @@ function pageCheck(param_page, param_user_id) {
 			setKeyEvents(param_page, 'dialog_user_location_id');
 			$('#dialog_user_asso_button').on('click', recordAssociation);
 			break;
+		*/
 
 		case "login":
 			LOGIN_DIALOG.showModal();
@@ -201,7 +202,6 @@ function pageCheck(param_page, param_user_id) {
 			break;
 	}
 }
-*/
 /*
 function setTemplate() {
 	document.getElementById('title').textContent = g_SECTIONS[g_CHOSEN_SECTION].section;

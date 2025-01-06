@@ -11,7 +11,10 @@ function refreshApp() {
 	g_ASSOCIATE_ITEMS = '';
 	g_PRINT_USER_OBJ = {};
 
-	getSections();
+	document.getElementById('app').textContent = '';
+	loadDialog('login', g_DIALOG, 'dialog_login');
+
+	//getSections();
 }
 
 function getSections() {

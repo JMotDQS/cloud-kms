@@ -3,7 +3,6 @@ $(document).ready(function() {
 });
 
 function refreshApp() {
-	g_CURRENT_LOGIN_USER_ID = 0;
 	g_USER_SEARCH = [];
 	g_NO_SEARCH_RESULTS = '';
 	g_COMPANIES = [];
@@ -11,10 +10,13 @@ function refreshApp() {
 	g_ASSOCIATE_ITEMS = '';
 	g_PRINT_USER_OBJ = {};
 
-	document.getElementById('app').textContent = '';
-	loadDialog('login', g_DIALOG, 'dialog_login');
+	document.getElementById('card-template-container').textContent = '';
 
-	//getSections();
+	if (g_CURRENT_LOGIN_USER_ID == 0) {
+		loadDialog('login', g_DIALOG, 'dialog_login');
+	} else {
+		getSections();
+	}
 }
 
 function getSections() {

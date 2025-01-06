@@ -4,6 +4,7 @@ const loadTemplate = (param_template) => {
 		temp_page = param_template.page;
 		g_CHOSEN_SECTION = parseInt(param_template.index);
 	}
+
 	switch(temp_page) {
 		case 'kms':
 			document.getElementById("card-template-container").innerHTML = kmsTemplate();
@@ -104,7 +105,6 @@ function loadDialog(param_template, param_template_dir, param_load_ele, param_us
 
 function pageCheck(param_page, param_user_id) {
 	clearTimer(g_TIMER);
-	console.log("pageCheck():param_page:", param_page);
 
 	switch(param_page) {
 		/*

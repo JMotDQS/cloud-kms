@@ -9,7 +9,6 @@ function userLoginCheck(e) {
 			document.getElementById('dialog-login-error').classList.add('dialog-error-show');
 		} else {
 			if(parseInt(resolve[0]['is_admin']) === 1 && parseInt(resolve[0]['is_active']) === 1) {
-				console.log("passed admin and active condition");
 				document.getElementById('dialog-login-error').classList.remove('dialog-error-show');
 				//feedBackColoring(document.getElementById('dialog-login-error'));
 				document.getElementById('dialog-login-error').textContent = '';

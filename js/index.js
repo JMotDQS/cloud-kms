@@ -12,7 +12,7 @@ function refreshApp() {
 
 	document.getElementById('card-template-container').textContent = '';
 
-	if (g_CURRENT_LOGIN_USER_ID == 0) {
+	if (g_CURRENT_LOGIN_USER_ID == '0') {
 		loadDialog('login', g_DIALOG, 'dialog_login');
 	} else {
 		getSections();

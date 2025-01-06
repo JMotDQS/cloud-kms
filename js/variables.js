@@ -18,7 +18,7 @@ const CLICK_EVENT = new CustomEvent('click');
 
 var g_TIMER;
 var g_KEY_RESET_TIMER;
-var g_CURRENT_LOGIN_USER_ID = 0;
+var g_CURRENT_LOGIN_USER_ID = '0';
 var g_USER_SEARCH = [];
 var g_NO_SEARCH_RESULTS = '';
 var g_SECTIONS = [];

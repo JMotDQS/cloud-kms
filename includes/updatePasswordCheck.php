@@ -11,10 +11,12 @@
 	$conn = sqlsrv_connect($serverName, $connectionInfo);
 
 	if ($conn) {
-		$sql = "UPDATE transport_users
-				SET password = '".$_POST['newPW']."', change_password = 0
+		$sql = "UPDATE g_employees
+				SET pass = '".$_POST['newPW']."', change_password = 0
 				OUTPUT INSERTED.change_password
-				WHERE pk_id = ".(int) $_POST['userId'];
+				WHERE pk_id = '".$_POST['userId']."'";
+		//echo json_encode($sql);
+		//die();		
 		$res = sqlsrv_query($conn, $sql);
 		
 		if ($res) {

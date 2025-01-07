@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	refreshApp();
+	getSections();
 });
 
 function refreshApp() {
@@ -15,7 +16,7 @@ function refreshApp() {
 	if (g_CURRENT_LOGIN_USER_ID == '0') {
 		loadDialog('login', g_DIALOG, 'dialog_login');
 	} else {
-		getSections();
+		loadTemplate('kms');
 	}
 }
 
@@ -25,8 +26,11 @@ function getLots() {
 		g_LOTS = resolve;
 		if(parseInt(g_CURRENT_USER['change_password']) === 1) {
 			loadDialog('passwordUpdate', g_DIALOG, 'dialog_login');
+		} else {
+			closeDialogLogin();
+			getSections();
+			loadTemplate('kms');
 		}
-		//loadTemplate('kms');
 	}).catch(function(reject) {
 		consoleReporting(reject);
 	}).finally(function() {
@@ -39,7 +43,6 @@ function getSections() {
 		g_SECTIONS = [];
 		g_SECTIONS = resolve['sections'];
 		g_CONNECTION = resolve['conn'];
-		loadTemplate('kms');
 	}).catch(function(reject) {
 		consoleReporting(reject);
 	}).finally(function() {
@@ -86,13 +89,10 @@ function reverseEntities(param_string) {
 }
 
 function feedBackColoring(param_ele, param_color = 'default') {
-	console.log("feedBackColoring():param_ele.id:", param_ele.id);
 	clearClassList(param_ele.id).classList.add('feedback-' + param_color);
 }
 
 function clearClassList(param_ele, param_copy) {
-	console.log("clearClassList() called");
-	console.log("clearClassList():param_ele:", param_ele);
 	document.getElementById(param_ele).classList = '';
 	return document.getElementById(param_ele);
 }
@@ -162,7 +162,6 @@ function checkIfDisabled(param_element) {
 }
 
 function setKeyEvents(param_page, param_element, param_multiplier = 1) {
-	console.log("setKeyEvents():param_page:", param_page);
 	$('#' + param_element).on('keypress', {page: param_page, inputEl: param_element, timerMultiplier: param_multiplier}, keyPressEvent);
 	$('#' + param_element).on('keyup', {page: param_page, inputEl: param_element, timerMultiplier: param_multiplier}, keyUpEvent);
 }
@@ -174,7 +173,6 @@ function clearTimer(param_timer) {
 function keyPressEvent(e) {
 	e.preventDefault;
 	clearTimer(g_TIMER); // prevent errant multiple timeouts from being generated
-	console.log("keyPressEvent() called");
 
 	const myEle = document.getElementById(e.data.inputEl);
 	switch(e.data.page) {
@@ -192,7 +190,6 @@ function keyPressEvent(e) {
 	}
 }
 function keyUpEvent(e) {
-	console.log("keyUpEvent() called");
 	e.preventDefault;
 	clearTimer(g_TIMER); // prevent errant multiple timeouts from being generated
 	const hasInput = document.getElementById(e.data.inputEl).value != '';

@@ -105,7 +105,6 @@ function loadDialog(param_template, param_template_dir, param_load_ele, param_us
 
 function pageCheck(param_page, param_user_id) {
 	clearTimer(g_TIMER);
-	console.log("pageCheck():param_page:", param_page);
 
 	switch(param_page) {
 		/*
@@ -162,7 +161,6 @@ function pageCheck(param_page, param_user_id) {
 			break;
 
 		case "passwordUpdate":
-			console.log("pageCheck():passwordUpdate reached");	
 			setKeyEvents(param_page, 'update_password', .5);
 			setKeyEvents(param_page, 'update_password_conf', .5);
 			toggleDisabled('dialog-password-update-form-button', true);

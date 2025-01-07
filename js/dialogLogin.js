@@ -3,10 +3,7 @@ function userLoginCheck(e) {
 	var pass = dataCleanUp($('#login_password').val());
 
 	userLoginCheckPromise('userLoginCheck', email_address, pass).then(function(resolve) {
-		console.log("resolve:", resolve);
-		console.log("resolve.length:", resolve.length);
 		if(resolve.length == 0) {
-			console.log("if reached");
 			document.getElementById('dialog-login-error').textContent = 'email/password do not match for user';
 			feedBackColoring(document.getElementById('dialog-login-error'), 'red');
 			document.getElementById('dialog-login-error').classList.remove('invisible');

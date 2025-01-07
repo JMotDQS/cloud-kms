@@ -24,6 +24,13 @@ function getLots() {
 	getLotsPromise(g_CURRENT_LOGIN_USER_ID, g_CURRENT_USER['is_admin']).then((resolve) => {
 		g_LOTS = [];
 		g_LOTS = resolve;
+		if (g_LOTS.length > 1) {
+			document.getElementById('navbar-link-lots').style.display = "inline-block";
+			document.getElementById('navbar-link-lots-divider').style.display = "inline-block";
+		} else {
+			document.getElementById('navbar-link-lots').style.display = "none";
+			document.getElementById('navbar-link-lots-divider').style.display = "none";
+		}
 		if(parseInt(g_CURRENT_USER['change_password']) === 1) {
 			loadDialog('passwordUpdate', g_DIALOG, 'dialog_login');
 		} else {

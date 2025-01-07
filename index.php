@@ -30,6 +30,8 @@
 				<li class="navbar-item nav-item-divider">|</li>
 				<a class="navbar-item navbar-link" data-page="docs" onclick="loadTemplate(this.dataset.page)">Docs</a>
 				<li class="navbar-item nav-item-divider">|</li>
+				<a id="navbar-link-lots" class="navbar-item navbar-link" data-page="lots" onclick="loadTemplate(this.dataset.page)">Lots</a>
+				<li id="navbar-link-lots-divider" class="navbar-item nav-item-divider">|</li>
 			</ul>
 		</nav>
 		<div id="app" class="main-container">

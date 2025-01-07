@@ -3,24 +3,31 @@ function userLoginCheck(e) {
 	var pass = dataCleanUp($('#login_password').val());
 
 	userLoginCheckPromise('userLoginCheck', email_address, pass).then(function(resolve) {
+		console.log("resolve:", resolve);
+		console.log("resolve.length:", resolve.length);
 		if(resolve.length == 0) {
-			document.getElementById('dialog-login-error').textContent = 'email/password do not match for admin user';
-			//feedBackColoring(document.getElementById('dialog-login-error'), 'red');
-			document.getElementById('dialog-login-error').classList.add('dialog-error-show');
+			console.log("if reached");
+			document.getElementById('dialog-login-error').textContent = 'email/password do not match for user';
+			feedBackColoring(document.getElementById('dialog-login-error'), 'red');
+			document.getElementById('dialog-login-error').classList.remove('invisible');
 		} else {
-			if(parseInt(resolve[0]['is_admin']) === 1 && parseInt(resolve[0]['is_active']) === 1) {
-				document.getElementById('dialog-login-error').classList.remove('dialog-error-show');
-				//feedBackColoring(document.getElementById('dialog-login-error'));
-				document.getElementById('dialog-login-error').textContent = '';
-				g_CURRENT_LOGIN_USER_ID = resolve[0]['pk_id'];
+			if(parseInt(resolve[0]['is_active']) === 1) {
+				document.getElementById('dialog-login-error').classList.add('invisible');
+				feedBackColoring(document.getElementById('dialog-login-error'));
+				document.getElementById('dialog-login-error').textContent = '&nbsp;';
+				g_CURRENT_USER = resolve[0];
+				g_CURRENT_LOGIN_USER_ID = g_CURRENT_USER['pk_id'];
 
 				//if(parseInt(resolve[0]['change_password']) === 1) {
 					//loadDialog('passwordUpdate', g_DIALOG, 'dialog_login');
 				//} else {
 					//getCompaniesPromise().then(function(resolve) {
 						//loadPage('nav', g_NAV);
-						getSections();
-						closeDialogLogin();
+						
+						//getSections();
+						getLots();
+						//closeDialogLogin();
+
 					//}).catch(function(reject) {
 						//console.log("reject:", reject);
 					//}).finally(function() {

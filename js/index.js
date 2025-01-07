@@ -19,6 +19,21 @@ function refreshApp() {
 	}
 }
 
+function getLots() {
+	getLotsPromise(g_CURRENT_LOGIN_USER_ID, g_CURRENT_USER['is_admin']).then((resolve) => {
+		g_LOTS = [];
+		g_LOTS = resolve;
+		if(parseInt(g_CURRENT_USER['change_password']) === 1) {
+			loadDialog('passwordUpdate', g_DIALOG, 'dialog_login');
+		}
+		//loadTemplate('kms');
+	}).catch(function(reject) {
+		consoleReporting(reject);
+	}).finally(function() {
+		consoleReporting("Moving On.");
+	});
+}
+
 function getSections() {
 	getSectionsPromise().then((resolve) => {
 		g_SECTIONS = [];
@@ -71,10 +86,13 @@ function reverseEntities(param_string) {
 }
 
 function feedBackColoring(param_ele, param_color = 'default') {
-	clearClassList(param_ele).classList.add('feedback-' + param_color);
+	console.log("feedBackColoring():param_ele.id:", param_ele.id);
+	clearClassList(param_ele.id).classList.add('feedback-' + param_color);
 }
 
 function clearClassList(param_ele, param_copy) {
+	console.log("clearClassList() called");
+	console.log("clearClassList():param_ele:", param_ele);
 	document.getElementById(param_ele).classList = '';
 	return document.getElementById(param_ele);
 }
@@ -144,6 +162,7 @@ function checkIfDisabled(param_element) {
 }
 
 function setKeyEvents(param_page, param_element, param_multiplier = 1) {
+	console.log("setKeyEvents():param_page:", param_page);
 	$('#' + param_element).on('keypress', {page: param_page, inputEl: param_element, timerMultiplier: param_multiplier}, keyPressEvent);
 	$('#' + param_element).on('keyup', {page: param_page, inputEl: param_element, timerMultiplier: param_multiplier}, keyUpEvent);
 }
@@ -155,6 +174,7 @@ function clearTimer(param_timer) {
 function keyPressEvent(e) {
 	e.preventDefault;
 	clearTimer(g_TIMER); // prevent errant multiple timeouts from being generated
+	console.log("keyPressEvent() called");
 
 	const myEle = document.getElementById(e.data.inputEl);
 	switch(e.data.page) {
@@ -172,6 +192,7 @@ function keyPressEvent(e) {
 	}
 }
 function keyUpEvent(e) {
+	console.log("keyUpEvent() called");
 	e.preventDefault;
 	clearTimer(g_TIMER); // prevent errant multiple timeouts from being generated
 	const hasInput = document.getElementById(e.data.inputEl).value != '';
@@ -212,6 +233,32 @@ function keyUpEvent(e) {
 					}, (g_TIMEOUT_VAL * parseInt(e.data.timerMultiplier)));
 					break;
 			}
+			break;
+
+		case 'passwordUpdate':
+			g_TIMER = window.setTimeout(() => {
+				var pw = document.getElementById('update_password').value;
+				var pwc = document.getElementById('update_password_conf').value;
+
+				if(pw === pwc && pw != '' && pwc != '') {
+					feedBackColoring(document.getElementById('dialog-password-error'), 'green');
+					document.getElementById('dialog-password-error').textContent = 'Passwords match!';
+					document.getElementById('dialog-password-error').classList.remove('invisible');
+					toggleDisabled('dialog-password-update-form-button', false);
+					document.getElementById('dialog-password-update-form-button').classList.remove('button-disabled');
+				} else if(pw == '' && pwc == '') {
+					document.getElementById('dialog-password-error').textContent = '&nbsp;';
+					document.getElementById('dialog-password-error').classList.add('invisible');
+					toggleDisabled('dialog-password-update-form-button', true);
+					document.getElementById('dialog-password-update-form-button').classList.add('button-disabled');
+				} else {
+					feedBackColoring(document.getElementById('dialog-password-error'), 'red');
+					document.getElementById('dialog-password-error').textContent = 'Passwords MUST match!';
+					document.getElementById('dialog-password-error').classList.remove('invisible');
+					toggleDisabled('dialog-password-update-form-button', true);
+					document.getElementById('dialog-password-update-form-button').classList.add('button-disabled');
+				}
+			}, (g_TIMEOUT_VAL * parseInt(e.data.timerMultiplier)));
 			break;
 	}
 }

@@ -24,6 +24,8 @@ function getSectionsPromise() {
 }
 
 function getLotsPromise(param_userid, param_admin = 0) {
+	console.log("getLotsPromise():param_userid:", param_userid);
+	console.log("getLotsPromise():param_admin:", param_admin);
 	return new Promise(function(resolve, reject) {
 		$.ajax({
 			url: "includes/getLots.php",
@@ -36,6 +38,7 @@ function getLotsPromise(param_userid, param_admin = 0) {
 			},
 
 			success: function (data) {
+				console.log("data:", data);
 				resolve(data);
 			},
 

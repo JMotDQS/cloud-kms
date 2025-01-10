@@ -72,9 +72,9 @@
 	--color-dashboard-dark: hsla(80 82% 43% / 1);
 	--color-dashboard-hover: hsla(80 82% 43% / var(--alpha-hover));
 
-	--color-admin-background: hsla(0, 0%, 30% / 1);
-	--color-admin-dark: hsla(0, 0%, 30% / 1);
-	--color-admin-hover: hsla(0, 0%, 30% / .7);
+	--color-admin-background: hsla(0 0% 43% / var(--alpha-background));
+	--color-admin-dark: hsla(0 0% 43% / 1);
+	--color-admin-hover: hsla(0 0% 43% / var(--alpha-hover));
 }
 
 body {

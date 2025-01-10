@@ -24,20 +24,25 @@ function getLots() {
 	getLotsPromise(g_CURRENT_LOGIN_USER_ID, g_CURRENT_USER['is_admin']).then((resolve) => {
 		g_LOTS = [];
 		g_LOTS = resolve;
-		if (g_LOTS.length > 1) {
-			document.getElementById('navbar-link-lots').style.display = "inline-block";
-			document.getElementById('navbar-link-lots-divider').style.display = "inline-block";
+		console.log("getLots():g_LOTS:", g_LOTS);
+		chooseLot();
+		/*if (g_LOTS.length > 1) {
+			document.getElementById('navbar-link-lots').classList.remove('nav-item-hide');
+			document.getElementById('navbar-link-lots-divider').classList.remove('nav-item-hide');
 		} else {
-			document.getElementById('navbar-link-lots').style.display = "none";
-			document.getElementById('navbar-link-lots-divider').style.display = "none";
+			document.getElementById('navbar-link-lots').classList.add('nav-item-hide');
+			document.getElementById('navbar-link-lots-divider').classList.add('nav-item-hide');
 		}
+
 		if(parseInt(g_CURRENT_USER['change_password']) === 1) {
 			loadDialog('passwordUpdate', g_DIALOG, 'dialog_login');
 		} else {
+			document.getElementById('navbar-user').innerHTML = g_CURRENT_USER['first_name'];
+			document.getElementById('navbar-user').classList.remove('nav-item-hide');
 			closeDialogLogin();
 			getSections();
 			loadTemplate('kms');
-		}
+		}*/
 	}).catch(function(reject) {
 		consoleReporting(reject);
 	}).finally(function() {
@@ -278,6 +283,29 @@ function cleanVIN(param_vin_scan) {
 	} else {
 		g_CURRENT_VIN = '';
 		return false;
+	}
+}
+
+const logOut = () => {
+	document.location.href = g_ROOT_PATH;
+}
+
+const chooseLot = () => {
+	console.log("chooseLot() called");
+	console.log("chooseLot():g_LOTS.length:", g_LOTS.length);
+	if (g_LOTS.length == 1) {
+		document.getElementById('navbar-user').innerHTML = g_CURRENT_USER['first_name'] + "&nbsp;:&nbsp;" + g_LOTS[0]['lot_name'];
+		document.getElementById('navbar-user').classList.remove('nav-item-hide');
+
+		document.getElementById('navbar-link-lots').classList.add('nav-item-hide');
+		document.getElementById('navbar-link-lots-divider').classList.add('nav-item-hide');
+
+		closeDialogLogin();
+		getSections();
+		loadTemplate('kms');
+	} else {
+		console.log("chooseLot():else reached");
+		loadDialog('lotChoice', g_DIALOG, 'dialog_lot_choice');
 	}
 }
 

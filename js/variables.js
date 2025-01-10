@@ -1,7 +1,8 @@
 /***** Global Use Variables */
-const g_ROOT_PATH = '/cloud-kms/';
+const g_ROOT_PATH = 'http://localhost/cloud-kms/';
 const USER_DIALOG = document.querySelector('.dialog_user');
 const LOGIN_DIALOG = document.querySelector('.dialog_login');
+const CHOOSE_LOT_DIALOG = document.querySelector('.dialog_lot_choice');
 const ADD_ADMIN_DIALOG = document.querySelector('.dialog_add_admin');
 const BULK_ADD_USER_DIALOG = document.querySelector('.dialog_bulk_add_user');
 const PREVENT_LOGIN_CLOSE = true;
@@ -31,6 +32,8 @@ var g_NEW_LOCATION = '';
 var g_ASSOCIATE_ITEMS = '';
 var g_PRINT_USER_OBJ = {};
 var g_CURRENT_VIN = '';
+var g_CURRENT_LOT = [];
+
 const g_MAILBOX_LENGTH = 8;
 const g_TIMEOUT_VAL = 500;
 const g_RESET_TIMEOUT_VAL = 2000;

@@ -175,6 +175,12 @@ function pageCheck(param_page, param_user_id) {
 				}
 			});
 			break;
+		
+		case "lotChoice":
+			/**** build dropdown with lots and add event listener to it onchange to automatically move on and set needed variables. ****/	
+			CHOOSE_LOT_DIALOG.showModal();	
+			closeDialogLogin();
+			break;
 
 		case "addAdmin":
 			setKeyEvents(param_page, 'add-admin_email', .5);

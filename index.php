@@ -32,6 +32,9 @@
 				<li class="navbar-item nav-item-divider">|</li>
 				<a id="navbar-link-lots" class="navbar-item navbar-link" data-page="lots" onclick="loadTemplate(this.dataset.page)">Lots</a>
 				<li id="navbar-link-lots-divider" class="navbar-item nav-item-divider">|</li>
+				<a id="navbar-link-logout" class="navbar-item navbar-link" data-page="logout" onclick="logOut()">Log Out</a>
+				<li id="navbar-link-lots-divider" class="navbar-item nav-item-divider">|</li>
+				<li id="navbar-user" class="navbar-item nav-item-divider nav-item-hide">user name</li>
 			</ul>
 		</nav>
 		<div id="app" class="main-container">
@@ -40,6 +43,7 @@
 
 		<dialog id="dialog_user" class="g_dialog dialog_user"></dialog>
 		<dialog id="dialog_login" class="g_dialog dialog_login"></dialog>
+		<dialog id="dialog_lot_choice" class="g_dialog dialog_lot_choice"></dialog>
 		<dialog id="dialog_add_admin" class="g_dialog dialog_add_admin"></dialog>
 		<dialog id="dialog_bulk_add_user" class="g_dialog dialog_bulk_add_user"></dialog>
 

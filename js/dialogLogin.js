@@ -8,10 +8,11 @@ function userLoginCheck(e) {
 			feedBackColoring(document.getElementById('dialog-login-error'), 'red');
 			document.getElementById('dialog-login-error').classList.remove('invisible');
 		} else {
+			console.log("parseInt(resolve[0]['is_active']):", parseInt(resolve[0]['is_active']));
 			if(parseInt(resolve[0]['is_active']) === 1) {
+				document.getElementById('dialog-login-error').textContent = '';
 				document.getElementById('dialog-login-error').classList.add('invisible');
 				feedBackColoring(document.getElementById('dialog-login-error'));
-				document.getElementById('dialog-login-error').textContent = '&nbsp;';
 				g_CURRENT_USER = resolve[0];
 				g_CURRENT_LOGIN_USER_ID = g_CURRENT_USER['pk_id'];
 

@@ -16,9 +16,9 @@ function userLoginCheck(e) {
 				g_CURRENT_USER = resolve[0];
 				g_CURRENT_LOGIN_USER_ID = g_CURRENT_USER['pk_id'];
 
-				//if(parseInt(resolve[0]['change_password']) === 1) {
-					//loadDialog('passwordUpdate', g_DIALOG, 'dialog_login');
-				//} else {
+				if(parseInt(resolve[0]['change_password']) === 1) {
+					loadDialog('passwordUpdate', g_DIALOG, 'dialog_login');
+				} else {
 					//getCompaniesPromise().then(function(resolve) {
 						//loadPage('nav', g_NAV);
 						
@@ -31,7 +31,7 @@ function userLoginCheck(e) {
 					//}).finally(function() {
 						//console.log("Moving On.");
 					//});
-				//}
+				}
 			} else {
 				document.getElementById('dialog-login-error').textContent = 'You are NOT an Admin and/or Active';
 				feedBackColoring(document.getElementById('dialog-login-error'), 'red');
@@ -47,5 +47,6 @@ function userLoginCheck(e) {
 }
 
 function closeDialogLogin() {
+	console.log("closeDialogLogin() called");
 	LOGIN_DIALOG.close();
 }

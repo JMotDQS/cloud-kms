@@ -1,9 +1,10 @@
 function updatePasswordCheck() {
 	updatePasswordCheckPromise('updatePasswordCheck', dataCleanUp($('#update_password').val()), g_CURRENT_LOGIN_USER_ID).then(function(resolve) {
 		if(parseInt(resolve) === 0) {
-			closeDialogLogin();
-			getSections();
-			loadTemplate('kms');
+			getLots();
+			//closeDialogLogin();
+			//getSections();
+			//loadTemplate('kms');
 			/*getCompaniesPromise().then(function(resolve) {
 				loadPage('nav', g_NAV);
 				closeDialogLogin();

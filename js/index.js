@@ -293,17 +293,29 @@ const logOut = () => {
 const chooseLot = () => {
 	console.log("chooseLot() called");
 	console.log("chooseLot():g_LOTS.length:", g_LOTS.length);
-	if (g_LOTS.length == 1) {
-		document.getElementById('navbar-user').innerHTML = g_CURRENT_USER['first_name'] + "&nbsp;:&nbsp;" + g_LOTS[0]['lot_name'];
-		document.getElementById('navbar-user').classList.remove('nav-item-hide');
 
-		document.getElementById('navbar-link-lots').classList.add('nav-item-hide');
-		document.getElementById('navbar-link-lots-divider').classList.add('nav-item-hide');
+	document.getElementById('navbar-user').innerHTML = g_CURRENT_USER['first_name'];
+	document.getElementById('navbar-link-lots').classList.add('nav-item-hide');
+	document.getElementById('navbar-link-lots-divider').classList.add('nav-item-hide');
+	document.getElementById('navbar-user').classList.remove('nav-item-hide');
+	if (g_LOTS.length < 1) {
+		closeDialogLogin();
+		getSections();
+		loadTemplate('kms');
+	}
+	if (g_LOTS.length == 1) {
+		console.log("chooseLot():if reached");
+		document.getElementById('navbar-user').innerHTML += "&nbsp;:&nbsp;" + g_LOTS[0]['lot_name'];
+		//document.getElementById('navbar-user').classList.remove('nav-item-hide');
+
+		/*document.getElementById('navbar-link-lots').classList.add('nav-item-hide');
+		document.getElementById('navbar-link-lots-divider').classList.add('nav-item-hide');*/
 
 		closeDialogLogin();
 		getSections();
 		loadTemplate('kms');
-	} else {
+	}
+	if (g_LOTS.length > 1) {
 		console.log("chooseLot():else reached");
 		loadDialog('lotChoice', g_DIALOG, 'dialog_lot_choice');
 	}
